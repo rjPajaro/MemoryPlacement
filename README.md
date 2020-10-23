@@ -1,3 +1,3 @@
 # MemoryPlacement
 
-This is a prototype project that simulates process synchronization and memory mangement for our Operating Systems class.
+This is a prototype project that simulates process synchronization and memory management for our Operating Systems class.
