@@ -54,6 +54,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategy\BestFit.cs" />
+    <Compile Include="Strategy\FirstFit.cs" />
     <EmbeddedResource Include="MemUI.resx">
       <DependentUpon>MemUI.cs</DependentUpon>
     </EmbeddedResource>

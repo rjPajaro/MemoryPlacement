@@ -198,6 +198,7 @@
             this.pauseButton.TabIndex = 6;
             this.pauseButton.Text = "Pause";
             this.pauseButton.UseVisualStyleBackColor = true;
+            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
             // 
             // startButton
             // 
@@ -208,6 +209,7 @@
             this.startButton.TabIndex = 7;
             this.startButton.Text = "START";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // abortButton
             // 
@@ -218,6 +220,7 @@
             this.abortButton.TabIndex = 8;
             this.abortButton.Text = "Abort";
             this.abortButton.UseVisualStyleBackColor = true;
+            this.abortButton.Click += new System.EventHandler(this.abortButton_Click);
             // 
             // labelJ1
             // 
@@ -1149,8 +1152,10 @@
             this.Controls.Add(this.labelNJ);
             this.Controls.Add(this.labelFS);
             this.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MemUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Memory Management";
             this.ResumeLayout(false);
             this.PerformLayout();

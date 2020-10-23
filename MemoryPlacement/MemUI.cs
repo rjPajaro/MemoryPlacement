@@ -15,6 +15,9 @@ namespace MemUI
         {
             InitializeComponent();
 
+            // Processes
+            programOutput.Enabled = false;
+
             // Fit Strategy
             comboxFS.Items.Add("First Fit");
             comboxFS.Items.Add("Best Fit");
@@ -102,6 +105,22 @@ namespace MemUI
                 jobs[i].Enabled = true;
                 timeU[i].Enabled = true;
             }
+        }
+
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            programOutput.Enabled = true;
+            //startButton.Enabled = false; //when the programOutput is ready
+        }
+
+        private void pauseButton_Click(object sender, EventArgs e)
+        {
+            programOutput.Enabled = false;
+        }
+
+        private void abortButton_Click(object sender, EventArgs e)
+        {
+            programOutput.Enabled = false;
         }
     }
 }
