@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelFS = new System.Windows.Forms.Label();
             this.labelNJ = new System.Windows.Forms.Label();
             this.labelComp = new System.Windows.Forms.Label();
@@ -126,6 +127,8 @@
             this.job20Comp = new System.Windows.Forms.Label();
             this.comboxMB = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.bfStrat = new System.Windows.Forms.Timer(this.components);
+            this.ffStrat = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // labelFS
@@ -167,6 +170,7 @@
             this.comboxFS.Name = "comboxFS";
             this.comboxFS.Size = new System.Drawing.Size(69, 24);
             this.comboxFS.TabIndex = 3;
+            this.comboxFS.SelectedIndexChanged += new System.EventHandler(this.comboxFS_SelectedIndexChanged);
             // 
             // comboxNJ
             // 
@@ -1024,6 +1028,14 @@
             this.textBox1.Size = new System.Drawing.Size(197, 477);
             this.textBox1.TabIndex = 100;
             // 
+            // bfStrat
+            // 
+            this.bfStrat.Tick += new System.EventHandler(this.bfStrat_Tick);
+            // 
+            // ffStrat
+            // 
+            this.ffStrat.Tick += new System.EventHandler(this.ffStrat_Tick);
+            // 
             // MemUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1239,6 +1251,8 @@
         private System.Windows.Forms.Label job20Comp;
         private System.Windows.Forms.ComboBox comboxMB;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Timer bfStrat;
+        private System.Windows.Forms.Timer ffStrat;
     }
 }
 
