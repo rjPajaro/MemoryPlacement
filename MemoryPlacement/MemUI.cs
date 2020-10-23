@@ -19,7 +19,7 @@ namespace MemUI
             comboxFS.Items.Add("First Fit");
             comboxFS.Items.Add("Best Fit");
 
-            // Memory Size
+            // Memory Size (MB)
             comboxMB.Items.Add("1");
             comboxMB.Items.Add("2");
             comboxMB.Items.Add("3");
