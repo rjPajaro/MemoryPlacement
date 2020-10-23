@@ -1,0 +1,10 @@
+C:\Users\Spencer\Documents\College Documents\IT154-8 - Operating Systems\Others\Final Project\MemUI\bin\Debug\MemUI.exe.config
+C:\Users\Spencer\Documents\College Documents\IT154-8 - Operating Systems\Others\Final Project\MemUI\bin\Debug\MemUI.exe
+C:\Users\Spencer\Documents\College Documents\IT154-8 - Operating Systems\Others\Final Project\MemUI\bin\Debug\MemUI.pdb
+C:\Users\Spencer\Documents\College Documents\IT154-8 - Operating Systems\Others\Final Project\MemUI\obj\Debug\MemUI.csprojAssemblyReference.cache
+C:\Users\Spencer\Documents\College Documents\IT154-8 - Operating Systems\Others\Final Project\MemUI\obj\Debug\MemUI.Form1.resources
+C:\Users\Spencer\Documents\College Documents\IT154-8 - Operating Systems\Others\Final Project\MemUI\obj\Debug\MemUI.Properties.Resources.resources
+C:\Users\Spencer\Documents\College Documents\IT154-8 - Operating Systems\Others\Final Project\MemUI\obj\Debug\MemUI.csproj.GenerateResource.cache
+C:\Users\Spencer\Documents\College Documents\IT154-8 - Operating Systems\Others\Final Project\MemUI\obj\Debug\MemUI.csproj.CoreCompileInputs.cache
+C:\Users\Spencer\Documents\College Documents\IT154-8 - Operating Systems\Others\Final Project\MemUI\obj\Debug\MemUI.exe
+C:\Users\Spencer\Documents\College Documents\IT154-8 - Operating Systems\Others\Final Project\MemUI\obj\Debug\MemUI.pdb

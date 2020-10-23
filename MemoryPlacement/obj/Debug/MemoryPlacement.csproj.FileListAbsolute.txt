@@ -1,0 +1,9 @@
+E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\bin\Debug\MemUI.exe.config
+E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\bin\Debug\MemUI.exe
+E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\bin\Debug\MemUI.pdb
+E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\obj\Debug\MemUI.MemUI.resources
+E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\obj\Debug\MemUI.Properties.Resources.resources
+E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\obj\Debug\MemoryPlacement.csproj.GenerateResource.cache
+E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\obj\Debug\MemUI.exe
+E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\obj\Debug\MemUI.pdb
+E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\obj\Debug\MemoryPlacement.csprojAssemblyReference.cache
