@@ -10,6 +10,7 @@ namespace MemUI
         private List<TextBox> jobs = new List<TextBox>();
         private List<TextBox> timeU = new List<TextBox>();
         private int numOfJobs = 0;
+        private double memory = 0;
 
         public MemUI()
         {
@@ -23,22 +24,10 @@ namespace MemUI
             comboxFS.Items.Add("Best Fit");
 
             // Memory Size (MB)
+            comboxMB.Items.Add("0.5");
             comboxMB.Items.Add("1");
             comboxMB.Items.Add("2");
-            comboxMB.Items.Add("3");
             comboxMB.Items.Add("4");
-            comboxMB.Items.Add("5");
-            comboxMB.Items.Add("6");
-            comboxMB.Items.Add("7");
-            comboxMB.Items.Add("8");
-            comboxMB.Items.Add("9");
-            comboxMB.Items.Add("10");
-            comboxMB.Items.Add("11");
-            comboxMB.Items.Add("12");
-            comboxMB.Items.Add("13");
-            comboxMB.Items.Add("14");
-            comboxMB.Items.Add("15");
-            comboxMB.Items.Add("16");
 
             // Number of Jobs
             comboxNJ.Items.Add("1");
@@ -121,6 +110,11 @@ namespace MemUI
         private void abortButton_Click(object sender, EventArgs e)
         {
             programOutput.Enabled = false;
+        }
+
+        private void comboxMB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            memory = Convert.ToDouble(comboxMB.Text);
         }
     }
 }
