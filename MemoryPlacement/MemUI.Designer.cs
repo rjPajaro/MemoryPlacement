@@ -127,7 +127,7 @@
             this.job18Comp = new System.Windows.Forms.Label();
             this.job19Comp = new System.Windows.Forms.Label();
             this.job20Comp = new System.Windows.Forms.Label();
-            this.textBoxMS = new System.Windows.Forms.TextBox();
+            this.comboxMB = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelFS
@@ -1034,19 +1034,21 @@
             this.job20Comp.TabIndex = 98;
             this.job20Comp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBoxMS
+            // comboxMB
             // 
-            this.textBoxMS.Location = new System.Drawing.Point(138, 43);
-            this.textBoxMS.Name = "textBoxMS";
-            this.textBoxMS.Size = new System.Drawing.Size(69, 23);
-            this.textBoxMS.TabIndex = 99;
+            this.comboxMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboxMB.FormattingEnabled = true;
+            this.comboxMB.Location = new System.Drawing.Point(138, 42);
+            this.comboxMB.Name = "comboxMB";
+            this.comboxMB.Size = new System.Drawing.Size(69, 24);
+            this.comboxMB.TabIndex = 99;
             // 
             // MemUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1101, 543);
-            this.Controls.Add(this.textBoxMS);
+            this.Controls.Add(this.comboxMB);
             this.Controls.Add(this.job20Comp);
             this.Controls.Add(this.job19Comp);
             this.Controls.Add(this.job18Comp);
@@ -1256,7 +1258,7 @@
         private System.Windows.Forms.Label job18Comp;
         private System.Windows.Forms.Label job19Comp;
         private System.Windows.Forms.Label job20Comp;
-        private System.Windows.Forms.TextBox textBoxMS;
+        private System.Windows.Forms.ComboBox comboxMB;
     }
 }
 

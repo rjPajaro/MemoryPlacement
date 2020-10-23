@@ -19,6 +19,24 @@ namespace MemUI
             comboxFS.Items.Add("First Fit");
             comboxFS.Items.Add("Best Fit");
 
+            // Memory Size
+            comboxMB.Items.Add("1");
+            comboxMB.Items.Add("2");
+            comboxMB.Items.Add("3");
+            comboxMB.Items.Add("4");
+            comboxMB.Items.Add("5");
+            comboxMB.Items.Add("6");
+            comboxMB.Items.Add("7");
+            comboxMB.Items.Add("8");
+            comboxMB.Items.Add("9");
+            comboxMB.Items.Add("10");
+            comboxMB.Items.Add("11");
+            comboxMB.Items.Add("12");
+            comboxMB.Items.Add("13");
+            comboxMB.Items.Add("14");
+            comboxMB.Items.Add("15");
+            comboxMB.Items.Add("16");
+
             // Number of Jobs
             comboxNJ.Items.Add("1");
             comboxNJ.Items.Add("2");

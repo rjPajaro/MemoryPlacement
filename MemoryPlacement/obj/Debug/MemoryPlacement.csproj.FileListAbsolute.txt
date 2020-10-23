@@ -7,3 +7,12 @@ E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\obj\Debug\MemoryPlacement.c
 E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\obj\Debug\MemUI.exe
 E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\obj\Debug\MemUI.pdb
 E:\School Files\SY 2020-2021\1stQT\OS\Project\Memory\obj\Debug\MemoryPlacement.csprojAssemblyReference.cache
+E:\Git Files\MemoryPlacement\MemoryPlacement\bin\Debug\MemUI.exe.config
+E:\Git Files\MemoryPlacement\MemoryPlacement\bin\Debug\MemUI.exe
+E:\Git Files\MemoryPlacement\MemoryPlacement\bin\Debug\MemUI.pdb
+E:\Git Files\MemoryPlacement\MemoryPlacement\obj\Debug\MemoryPlacement.csprojAssemblyReference.cache
+E:\Git Files\MemoryPlacement\MemoryPlacement\obj\Debug\MemUI.MemUI.resources
+E:\Git Files\MemoryPlacement\MemoryPlacement\obj\Debug\MemUI.Properties.Resources.resources
+E:\Git Files\MemoryPlacement\MemoryPlacement\obj\Debug\MemoryPlacement.csproj.GenerateResource.cache
+E:\Git Files\MemoryPlacement\MemoryPlacement\obj\Debug\MemUI.exe
+E:\Git Files\MemoryPlacement\MemoryPlacement\obj\Debug\MemUI.pdb
