@@ -127,7 +127,7 @@
             this.job20Comp = new System.Windows.Forms.Label();
             this.comboxMB = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.bfStrat = new System.Windows.Forms.Timer(this.components);
+            this.memLbl = new System.Windows.Forms.Label();
             this.ffStrat = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
@@ -190,6 +190,7 @@
             this.textboxComp.Name = "textboxComp";
             this.textboxComp.Size = new System.Drawing.Size(69, 23);
             this.textboxComp.TabIndex = 5;
+            this.textboxComp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pauseButton
             // 
@@ -766,7 +767,7 @@
             // labelJ12
             // 
             this.labelJ12.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ12.Location = new System.Drawing.Point(22, 501);
+            this.labelJ12.Location = new System.Drawing.Point(19, 501);
             this.labelJ12.Name = "labelJ12";
             this.labelJ12.Size = new System.Drawing.Size(45, 16);
             this.labelJ12.TabIndex = 40;
@@ -807,8 +808,11 @@
             this.textboxCoa.Location = new System.Drawing.Point(392, 17);
             this.textboxCoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textboxCoa.Name = "textboxCoa";
+            this.textboxCoa.ReadOnly = true;
             this.textboxCoa.Size = new System.Drawing.Size(69, 23);
             this.textboxCoa.TabIndex = 75;
+            this.textboxCoa.Text = "1";
+            this.textboxCoa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // programOutput
             // 
@@ -1028,13 +1032,19 @@
             this.textBox1.Size = new System.Drawing.Size(197, 477);
             this.textBox1.TabIndex = 100;
             // 
-            // bfStrat
+            // memLbl
             // 
-            this.bfStrat.Tick += new System.EventHandler(this.bfStrat_Tick);
+            this.memLbl.AutoSize = true;
+            this.memLbl.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memLbl.Location = new System.Drawing.Point(848, 115);
+            this.memLbl.Name = "memLbl";
+            this.memLbl.Size = new System.Drawing.Size(71, 19);
+            this.memLbl.TabIndex = 101;
+            this.memLbl.Text = "Memory:";
             // 
             // ffStrat
             // 
-            this.ffStrat.Tick += new System.EventHandler(this.ffStrat_Tick);
+            this.ffStrat.Tick += new System.EventHandler(this.ffStrat_Tick_1);
             // 
             // MemUI
             // 
@@ -1042,6 +1052,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1092, 783);
+            this.Controls.Add(this.memLbl);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboxMB);
             this.Controls.Add(this.job20Comp);
@@ -1251,7 +1262,7 @@
         private System.Windows.Forms.Label job20Comp;
         private System.Windows.Forms.ComboBox comboxMB;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Timer bfStrat;
+        private System.Windows.Forms.Label memLbl;
         private System.Windows.Forms.Timer ffStrat;
     }
 }
