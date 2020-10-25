@@ -116,7 +116,7 @@ namespace MemUI
             }
         }
 
-        List<int> test = new List<int>();
+        private List<int> _completed = new List<int>();
         private void startButton_Click(object sender, EventArgs e) // This should also call the threadProc
         {
             programOutput.Enabled = true;
@@ -151,7 +151,7 @@ namespace MemUI
                 for (int i = 0; i < numOfJobs; i++)
                 {
                     compTime[i].Text = "Not Started";
-                    test.Add(0);
+                    _completed.Add(0);
                     /*if(Int32.Parse(jobs[i].Text) <= memory)
                     {
                         //jSize.Add(Int32.Parse(jobs[i].Text)); // converts the job sizes to int from string and puts them in a list
@@ -169,7 +169,8 @@ namespace MemUI
 
                 if (strategy.Equals("First Fit"))
                 {
-                    ffStrat.Interval = 1000;
+                    ff.ffConstructor(jSize, jTime, memory);
+                    ffStrat.Interval = 500;
                     ffStrat.Start();
                 }
             }
@@ -209,14 +210,39 @@ namespace MemUI
             memory = Convert.ToDouble(comboxMB.Text);
             memory = memory * 1000;
         }
+
+        private int ramLeft = 0, timeDec = 0, procSize = 0;
         
         private void ffStrat_Tick_1(object sender, EventArgs e)
         {
-            ff.ffConstructor(jSize, jTime, memory);
-            jSize = ff.ffMemory(_ticks);
-            memory = ff.memoryLeft();
+            ff.ffMemoryAlloc(_ticks);
+            ramLeft = ff.memoryLeft();
+            procSize = ff.processSize();
 
-            //jTime = ff.ffRemaining();
+            jTime = ff.ffRemaining(timeDec);
+
+            {
+                if (jTime[timeDec] == 0) //if the job is completed, output the TU it finished
+                {
+                    compTime[timeDec].Text = "Completed in " + (_ticks + 1).ToString() + " TU";
+                    _completed[timeDec] = _ticks+1;
+                    _complete++;
+                }
+                else if (jTime[timeDec] < 0) // Prevents Completion TU to decrement
+                {
+                    compTime[timeDec].Text = "Completed in " + _completed[timeDec].ToString() + " TU";
+                }
+                else // Continue to process
+                {
+                    compTime[timeDec].Text = "Remaining " + jTime[timeDec].ToString() + " TU";
+                }
+                timeDec++;
+                if (timeDec == procSize && ramLeft == 0)
+                {
+                    timeDec = 0;
+                }
+            }
+
 
             // TODO: OUTPUT LOGIC
             {

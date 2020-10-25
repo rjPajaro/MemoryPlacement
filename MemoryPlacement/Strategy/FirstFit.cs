@@ -12,46 +12,52 @@ namespace MemUI.Strategy
         private List<int> remaining;
         private List<int> memoryAlloc;
         private List<int> memo = new List<int>();
-        private List<int> holes = new List<int>();
+        private List<char> holes = new List<char>();
         private int RAM = 0;
         private int memorySum = 0, hole = 0;
 
-        public void ffConstructor(List<int> jSize, List<int> jTime, double memory) // Constructor that is being updated every TU
+        public void ffConstructor(List<int> jSize, List<int> jTime, double memory)
         {
             memoryAlloc = new List<int>(jSize);
             remaining = new List<int>(jTime);
             RAM = Convert.ToInt32(memory);
-            hole = 0;
         }
 
-        public List<int> ffMemory(int inc)
+        public void ffMemoryAlloc(int inc)
         {
-            if(memoryAlloc[inc] <= RAM)
+            if (memoryAlloc[inc] <= RAM)
             {
-                memo.Add(memoryAlloc[inc]);
                 RAM -= memoryAlloc[inc];
-                memorySum = memo.Sum();
-                memoryAlloc.RemoveAt(inc);
-            }
-            else
-            {
-                hole = memorySum - RAM;
-            }
+                //memoryAlloc.RemoveAt(inc);
 
-            return memo;
+                if (memoryAlloc[inc + 1] > RAM)
+                {
+                    memo.Add(RAM);
+                    holes.Add('h');
+                    RAM -= RAM;
+                }
+                else
+                {
+                    memo.Add(memoryAlloc[inc]);
+                    holes.Add('p'); // if 'p', it's part of the process. If 'h', it's a hole
+                }
+            }
+            
         }
 
-        public double memoryLeft()
+        public int memoryLeft()
         {
             return RAM;
         }
 
-        public List<int> ffRemaining() // remaining time units
+        public int processSize()
         {
-            for(int i = 0; i < remaining.Count(); i++)
-            {
-                remaining[i] -= 1;
-            }
+            return memo.Count();
+        }
+
+        public List<int> ffRemaining(int timeDec) // remaining time units
+        {
+            remaining[timeDec] -= 1;
             return remaining;
         }
 
