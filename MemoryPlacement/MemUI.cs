@@ -211,31 +211,35 @@ namespace MemUI
             memory = memory * 1000;
         }
 
-        private int ramLeft = 0, timeDec = 0, procSize = 0;
+        private int ramLeft = 0, timeDec = 0, procSize = 0, timeUnit = 0;
+        private List<int> holes = new List<int>();
         
         private void ffStrat_Tick_1(object sender, EventArgs e)
         {
+            timeUnit++;
             ff.ffMemoryAlloc(_ticks);
             ramLeft = ff.memoryLeft();
             procSize = ff.processSize();
-
             jTime = ff.ffRemaining(timeDec);
 
-            {
+            { // Comp Time Process
                 if (jTime[timeDec] == 0) //if the job is completed, output the TU it finished
                 {
                     compTime[timeDec].Text = "Completed in " + (_ticks + 1).ToString() + " TU";
-                    _completed[timeDec] = _ticks+1;
+                    _completed[timeDec] = _ticks+1; //saves completion time in a list to be called
                     _complete++;
+                    ff.updateRAM(timeDec, 'h');
                 }
-                else if (jTime[timeDec] < 0) // Prevents Completion TU to decrement
+                else if (jTime[timeDec] < 0) // Prevents Completed jobs to decrement
                 {
                     compTime[timeDec].Text = "Completed in " + _completed[timeDec].ToString() + " TU";
                 }
                 else // Continue to process
                 {
                     compTime[timeDec].Text = "Remaining " + jTime[timeDec].ToString() + " TU";
+
                 }
+
                 timeDec++;
                 if (timeDec == procSize && ramLeft == 0)
                 {

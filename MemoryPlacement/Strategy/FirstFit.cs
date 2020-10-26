@@ -61,5 +61,10 @@ namespace MemUI.Strategy
             return remaining;
         }
 
+        public void updateRAM(int time, char h)
+        {
+            holes[time] = h;
+        }
+
     }
 }
