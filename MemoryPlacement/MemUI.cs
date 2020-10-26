@@ -11,14 +11,17 @@ namespace MemUI
         //variables
         private List<TextBox> jobs = new List<TextBox>();
         private List<TextBox> timeU = new List<TextBox>();
+        private List<Label> compTime = new List<Label>();
         private List<int> jSize = new List<int>();
         private List<int> jTime = new List<int>();
-        private List<Label> compTime = new List<Label>();
+        private List<int> positions = new List<int>();
+        private List<char> holes = new List<char>();
         private FirstFit ff = new FirstFit();
         private BestFit bf = new BestFit();
         private double memory = 0;
         private int numOfJobs = 0, compInt = 0, _ticks = 0, _complete = 0;
         private string strategy;
+        private int ramLeft = 0, timeDec = 0, procSize = 0, timeUnit = 0;
 
         public MemUI()
         {
@@ -130,7 +133,7 @@ namespace MemUI
 
             try
             {
-                //Debug
+                // For Testing (Debugging)
                 {
                     jSize.Add(500);
                     jSize.Add(250);
@@ -152,7 +155,9 @@ namespace MemUI
                 {
                     compTime[i].Text = "Not Started";
                     _completed.Add(0);
-                    /*if(Int32.Parse(jobs[i].Text) <= memory)
+                    // To be added
+                    {
+                        /*if(Int32.Parse(jobs[i].Text) <= memory)
                     {
                         //jSize.Add(Int32.Parse(jobs[i].Text)); // converts the job sizes to int from string and puts them in a list
                         //jTime.Add(Int32.Parse(timeU[i].Text));// converts the job time units to int from string and puts them in a list
@@ -161,7 +166,13 @@ namespace MemUI
                     {
                         MessageBox.Show("Job size/s are larger than the given memory size", "MemoryError:");
                     }*/
+                    }
+                }
 
+                foreach (int i in jSize)
+                {
+                    int pos = jSize.IndexOf(i);
+                    positions.Add(pos);
                 }
 
                 compInt = Int32.Parse(textboxComp.Text);
@@ -169,7 +180,6 @@ namespace MemUI
 
                 if (strategy.Equals("First Fit"))
                 {
-                    ff.ffConstructor(jSize, jTime, memory);
                     ffStrat.Interval = 500;
                     ffStrat.Start();
                 }
@@ -193,6 +203,7 @@ namespace MemUI
         private void pauseButton_Click(object sender, EventArgs e)
         {
             programOutput.Enabled = false;
+            ffStrat.Stop();
         }
 
         private void abortButton_Click(object sender, EventArgs e)
@@ -209,62 +220,132 @@ namespace MemUI
         {
             memory = Convert.ToDouble(comboxMB.Text);
             memory = memory * 1000;
+            ramLeft = Convert.ToInt32(memory);
         }
 
-        private int ramLeft = 0, timeDec = 0, procSize = 0, timeUnit = 0;
-        private List<int> holes = new List<int>();
-        
+        private string newLine = Environment.NewLine;
+        private int reAlloc = 0, allocated = 0, timer = 1;
+
+        private List<int> memoryAlloc = new List<int>();
+
         private void ffStrat_Tick_1(object sender, EventArgs e)
         {
+            int pCount = 0;
             timeUnit++;
-            ff.ffMemoryAlloc(_ticks);
-            ramLeft = ff.memoryLeft();
-            procSize = ff.processSize();
-            jTime = ff.ffRemaining(timeDec);
-
-            { // Comp Time Process
-                if (jTime[timeDec] == 0) //if the job is completed, output the TU it finished
-                {
-                    compTime[timeDec].Text = "Completed in " + (_ticks + 1).ToString() + " TU";
-                    _completed[timeDec] = _ticks+1; //saves completion time in a list to be called
-                    _complete++;
-                    ff.updateRAM(timeDec, 'h');
-                }
-                else if (jTime[timeDec] < 0) // Prevents Completed jobs to decrement
-                {
-                    compTime[timeDec].Text = "Completed in " + _completed[timeDec].ToString() + " TU";
-                }
-                else // Continue to process
-                {
-                    compTime[timeDec].Text = "Remaining " + jTime[timeDec].ToString() + " TU";
-
-                }
-
-                timeDec++;
-                if (timeDec == procSize && ramLeft == 0)
-                {
-                    timeDec = 0;
-                }
-            }
-
-
-            // TODO: OUTPUT LOGIC
+            if (allocated == 1) // memory has processes
             {
-                /*if (jTime[i] == 0) //if the job is completed, output the TU it finished
-           {
-               compTime[i].Text = "Completed in " + _ticks.ToString() + " TU";
-               test[i] = _ticks;
-               _complete++;
-           }
-           else if (jTime[i] < 0) // Prevents Completion TU to decrement
-           {
-               compTime[i].Text = "Completed in " + test[i].ToString() + " TU";
-           }
-           else // Continue to coalesce
-           {
-               compTime[i].Text = "Remaining " + jTime[i].ToString() + " TU";
-           }*/
+                if((jTime[timer - 1]-1) == 0) // if the process is complete, output the completion TU
+                {
+                    compTime[timer - 1].Text = "Completed in " + (timeUnit).ToString() + " TU"; // bug: time unit always updates when something completes
+                }
+                else // if the process is still running, subtract 1 to its TU
+                {
+                    compTime[timer - 1].Text = "Remaining " + (jTime[timer - 1] - 1).ToString() + " TU";
+                    jTime[timer - 1] -= 1;
+                }
+
+                for (int i = 0; i < holes.Count(); i++) // counts all the processes in the array
+                {
+                    if (holes[i] == 'p')
+                    {
+                        pCount++;
+                    }
+                }
+
+                if (timer == pCount) //once timer reaches process count, re-initialize to 0
+                {
+                    timer = 0;
+                }
             }
+            else if(allocated == 0) // memory has not been allocated
+            {
+                int n = 0;
+                while (n == 0) // moves to the next iteration if the given size is too big
+                {
+                    if (jSize[timer - 1] <= ramLeft) // if the current process size is less than the available space
+                    {
+                        memoryAlloc.Add(jSize[timer - 1]); // add to the memory
+                        compTime[timer - 1].Text = "Remaining " + (jTime[timer - 1] - 1).ToString() + " TU";
+                        holes.Add('p'); // p = process
+                        jTime[timer - 1] -= 1;
+                        ramLeft -= jSize[timer - 1];
+
+                        if (jSize[timer] > ramLeft) // if the process' size is greater than the available memory
+                        {
+                            memoryAlloc.Add(ramLeft); // add the memory left as a 'hole'
+                            holes.Add('h'); // hole
+                            ramLeft -= ramLeft; // make this = 0
+                            timer = 0; //reset the timer
+                            allocated = 1; // all memory spaces have been allocated
+                        }
+                        n = 1; //breaks
+                    }
+                    else
+                    {
+                        timer++;
+                        n = 0; //loops
+                    }
+                }
+            }
+
+            timer++;
+            _ticks++;
+            if(_ticks == jSize.Count())
+            {
+                _ticks = 0;
+            }
+            // Fail - might delete
+            {
+                /*
+            timeUnit++;
+
+            if(reAlloc == 1)
+            {
+                ff.checkAlloc();
+                
+                ff.procHoles();
+                //reAlloc = 0;
+            }
+            else
+            {
+                ff.ffMemoryAlloc(_ticks);
+                //programOutput.Text += timeUnit.ToString() + " TU - Allocate Job #" + (timeDec + 1).ToString() + newLine;
+
+                ramLeft = ff.memoryLeft();
+                procSize = ff.processSize();
+                jTime = ff.ffRemaining(timeDec);
+
+                { // Comp Time Process
+                    if (jTime[timeDec] == 0) //if the job is completed, output the TU it finished
+                    {
+                        compTime[timeDec].Text = "Completed in " + (_ticks + 1).ToString() + " TU";
+                        programOutput.Text += timeUnit.ToString() + " TU - Completed Job #" + (timeDec + 1).ToString() + newLine;
+
+                        _completed[timeDec] = _ticks + 1; //saves completion time in a list to be called
+                        _complete++;
+                        ff.updateRAM(timeDec, 'h');
+                        reAlloc = 1;
+                    }
+                    else if (jTime[timeDec] < 0) // Prevents Completed jobs to decrement
+                    {
+                        compTime[timeDec].Text = "Completed in " + _completed[timeDec].ToString() + " TU";
+                    }
+                    else // Continue to process
+                    {
+                        compTime[timeDec].Text = "Remaining " + jTime[timeDec].ToString() + " TU";
+                        programOutput.Text += timeUnit.ToString() + " TU - Process Job #" + (timeDec + 1).ToString() + newLine;
+                    }
+
+                    timeDec++;
+                    if (timeDec == procSize && ramLeft == 0)
+                    {
+                        timeDec = 0;
+                    }
+                }
+            }
+
+            
+
 
             _ticks++; // job cycler
             if (_ticks == numOfJobs)
@@ -275,6 +356,8 @@ namespace MemUI
             {
                 ffStrat.Stop();
                 MessageBox.Show("Finished in " + _ticks + " TU", "Success!");
+            }
+             */
             }
         }
 

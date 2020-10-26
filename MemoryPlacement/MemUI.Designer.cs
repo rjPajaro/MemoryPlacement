@@ -185,11 +185,14 @@
             // 
             // textboxComp
             // 
+            this.textboxComp.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textboxComp.Location = new System.Drawing.Point(391, 43);
             this.textboxComp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textboxComp.Name = "textboxComp";
+            this.textboxComp.ReadOnly = true;
             this.textboxComp.Size = new System.Drawing.Size(69, 23);
             this.textboxComp.TabIndex = 5;
+            this.textboxComp.Text = "20";
             this.textboxComp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pauseButton
@@ -805,6 +808,7 @@
             // 
             // textboxCoa
             // 
+            this.textboxCoa.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textboxCoa.Location = new System.Drawing.Point(392, 17);
             this.textboxCoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textboxCoa.Name = "textboxCoa";

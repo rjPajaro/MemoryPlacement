@@ -11,6 +11,7 @@ namespace MemUI.Strategy
     {
         private List<int> remaining;
         private List<int> memoryAlloc;
+        private List<int> positions = new List<int>();
         private List<int> memo = new List<int>();
         private List<char> holes = new List<char>();
         private int RAM = 0;
@@ -21,28 +22,48 @@ namespace MemUI.Strategy
             memoryAlloc = new List<int>(jSize);
             remaining = new List<int>(jTime);
             RAM = Convert.ToInt32(memory);
+
+            foreach (int i in memoryAlloc)
+            {
+                int pos = memoryAlloc.IndexOf(i);
+                positions.Add(pos);
+            }
         }
 
         public void ffMemoryAlloc(int inc)
         {
-            if (memoryAlloc[inc] <= RAM)
+            if (memoryAlloc[0] <= RAM)
             {
-                RAM -= memoryAlloc[inc];
-                //memoryAlloc.RemoveAt(inc);
+                memo.Add(memoryAlloc[0]);
+                holes.Add('p'); // if 'p', it's part of the process. If 'h', it's a hole
+                RAM -= memoryAlloc[0];
 
-                if (memoryAlloc[inc + 1] > RAM)
+                if (memoryAlloc[1] > RAM)
                 {
                     memo.Add(RAM);
                     holes.Add('h');
                     RAM -= RAM;
                 }
-                else
-                {
-                    memo.Add(memoryAlloc[inc]);
-                    holes.Add('p'); // if 'p', it's part of the process. If 'h', it's a hole
-                }
+
+                memoryAlloc.RemoveAt(0); //pops the first element from the size list (first fit logic)
             }
-            
+        }
+
+        public void checkAlloc()
+        {
+            int idx = holes.IndexOf('h');
+            if(memoryAlloc[0] < memo[idx])
+            {
+                memo.Insert(idx, memoryAlloc[0]);
+                memo[idx + 1] -= memo[idx];
+                memoryAlloc.RemoveAt(0);
+                holes.Insert(idx, 'p');
+            }
+        }
+
+        public List<char> procHoles()
+        {
+            return holes;
         }
 
         public int memoryLeft()
@@ -52,7 +73,13 @@ namespace MemUI.Strategy
 
         public int processSize()
         {
-            return memo.Count();
+            int countSize = 0;
+            for(int i = 0; i < holes.Count(); i++)
+            {
+                if (holes[i] == 'p')
+                    countSize++;
+            }
+            return countSize;
         }
 
         public List<int> ffRemaining(int timeDec) // remaining time units
