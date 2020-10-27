@@ -182,7 +182,7 @@ namespace MemUI
 
                 if (strategy.Equals("First Fit"))
                 {
-                    ffStrat.Interval = 500;
+                    ffStrat.Interval = 1000;
                     ffStrat.Start();
                 }
             }
@@ -252,19 +252,14 @@ namespace MemUI
                         holes.Insert(idx, 'p');
                         memoryAlloc[idx+1] -= memoryAlloc[idx];
                         compTime[positions[ct-1]].Text = "Remaining " + (jTime[positions[ct-1]] - 1).ToString() + " TU";
+                        programOutput.Text += timeUnit.ToString() + " TU - Allocate Job #" + (positions[ct-1]+1) + newLine;
+                        jTime[positions[ct - 1]] -= 1;
                         uPos.Insert(idx, positions[ct - 1]);
                         smallest = uPos.IndexOf(uPos.Min());
-                        /*string text = "";
-                        for(int i = 0; i < uPos.Count(); i++)
-                        {
-                            text += uPos[i].ToString() + ", ";
-                        }*/
-                        //lblPosition.Text = text + " hmm"; // debugger
                         allocated = -1;
                         m = 1;
 
                         h = holes.IndexOf('h');
-
                         if(jSize[positions[ct]] > memoryAlloc[h])
                         {
                             reprocess = 1;
@@ -281,7 +276,7 @@ namespace MemUI
                 }
             }
 
-            if (allocated == 2)
+            if (allocated == 1)
             {
                 //lblPosition.Text = "this is called already"; // debugger
                 if (uPos[smallest] == 9999)
@@ -290,6 +285,11 @@ namespace MemUI
                     if (smallest >= uPos.Count())
                     {
                         smallest = 0;
+                        string test = "";
+                        for (int i = 0; i < uPos.Count(); i++)
+                        {
+                            test += uPos[i].ToString() + " ";
+                        }                    
                     }
                 }
                 
@@ -297,42 +297,111 @@ namespace MemUI
                 {
                     _completed.Add(timeUnit);
                     compTime[uPos[smallest]].Text = "Completed in " + (_completed[uPos[smallest]]).ToString() + " TU";
+                    programOutput.Text += timeUnit.ToString() + " TU - Completed Job #" + (uPos[smallest]+1) + newLine;
                     holes[uPos[smallest]] = 'h';
+                    positions.RemoveAt(uPos[smallest]);
                     uPos[uPos[smallest]] = 9999;
-                    //reAlloc = 1;
+                    reAlloc = 1;
+                    string test = "";
+                    for(int i = 0; i < positions.Count(); i++)
+                    {
+                        test += positions[i].ToString() + " ";
+                    }
+                    lblPosition.Text = test.ToString();
                 }
-                else // TODO: does not decrement jobs 4 and 5
+                else 
                 {
-                    compTime[uPos[smallest]].Text = "Remaining " + (jTime[uPos[smallest]] - 1).ToString() + " TU";
+                    //lblPosition.Text = "hmm: " + uPos[smallest].ToString(); // debugger
+                    compTime[uPos[smallest]].Text = "Remaining " + (jTime[uPos[smallest]]-1).ToString() + " TU";
+                    programOutput.Text += timeUnit.ToString() + " TU - Process Job #" + (uPos[smallest] + 1) + newLine;
                     jTime[uPos[smallest]] -= 1;
+                    //lblPosition.Text = smallest.ToString(); // debugger
                 }
+
                 smallest++;
-
-
                 if (smallest >= uPos.Count())
                     smallest = 0;
-
-                /*if (holes[h+1] == 'p')
-                {
-                    
-                }
-                else if(holes[h + 1] == 'h')
-                {
-                    //lblPosition.Text = "yikes"; // debugger
-                    h++;
-                }
-                else if(holes[h] == holes.Count())
-                {
-
-                }*/
             }
-            else if (allocated == 1) // memory has processes
+            else if (allocated == 0) // memory has not been allocated
+            {
+                // I need to redo this loop for allocating.
+                // At the first allocation, the remaining space should be a hole
+                // Every time I would add a value after the first allocation, it should go through the loop
+                // The first instance that a value is less than the hole, break the loop and insert the value before the hole
+                // reAlloc Logic might work. - A very tired Randall -O-zzzz
+
+                int n = 0;
+                while (n == 0) // moves to the next iteration if the given size is too big
+                {
+                    if (jSize[timer-1] <= ramLeft) // if the current process size is less than the available space
+                    {
+                        for (int i = timer-1; i < jSize.Count(); i++)
+                        {
+                            if (jSize[i] <= ramLeft)
+                            {
+                                memoryAlloc.Add(jSize[i]); // add to the memory
+                                compTime[i].Text = "Remaining " + (jTime[i] - 1).ToString() + " TU";
+                                programOutput.Text += timeUnit.ToString() + " TU - Allocate Job #" + (i+1) + newLine;
+                                holes.Add('p'); // p = process
+                                jTime[i] -= 1;
+                                ramLeft -= jSize[i];
+                                uPos.Add(positions[i]);
+                                //positions.RemoveAt(i);
+                                break;
+                            }
+                        }
+
+                        n = 1; //breaks
+                    }
+                    else if (jSize[timer] > ramLeft) // if the process' size is greater than the available memory
+                    {
+                        for (int i = timer; i < jSize.Count(); i++)
+                        {
+                            if (jSize[i] <= ramLeft)
+                            {
+                                memoryAlloc.Add(jSize[i]); // add to the memory
+                                compTime[i].Text = "Remaining " + (jTime[i] - 1).ToString() + " TU";
+                                programOutput.Text += timeUnit.ToString() + " TU - Allocate Job #" + (i + 1) + newLine;
+                                holes.Add('p'); // p = process
+                                jTime[i] -= 1;
+                                ramLeft -= jSize[i];
+                                uPos.Add(positions[i]);
+                                //positions.RemoveAt(i);
+
+                                memoryAlloc.Add(ramLeft); // add the memory left as a 'hole'
+                                holes.Add('h'); // h = hole
+                                uPos.Add(9999);
+                                string test = "";
+                                for (int j = 0; j < uPos.Count(); j++)
+                                {
+                                    test += memoryAlloc[j].ToString() + " ";
+                                }
+                                lblPosition.Text = test;
+                                ramLeft -= ramLeft; // make this = 0
+                                timer = 0; //reset the timer
+                                allocated = 1; // all memory spaces have been allocated
+                                smallest = uPos.IndexOf(uPos.Min());
+                                break;
+                            }
+                        }
+                        n = 1;
+                    }
+                    else
+                    {
+                        timer++;
+                        n = 0; //loops
+                    }
+                }
+            }
+            // not needed anymore I think
+            {
+                /*else if (allocated == 1) // memory has processes
             {
                 if((jTime[timer - 1]-1) == 0) // if the process is complete, output the completion TU
                 {
                     _completed.Add(timeUnit);
                     compTime[timer - 1].Text = "Completed in " + (_completed[timer-1]).ToString() + " TU";
-
+                    programOutput.Text += timeUnit.ToString() + " TU - Completed Job #" + (timer) + newLine;
                     holes[timer - 1] = 'h';
                     uPos[timer - 1] = 9999;
                     //lblPosition.Text = uPos.Min().ToString();
@@ -340,7 +409,8 @@ namespace MemUI
                 }
                 else // if the process is still running, subtract 1 to its TU
                 {
-                    compTime[timer - 1].Text = "Remaining " + (jTime[timer - 1] - 1).ToString() + " TU";
+                    programOutput.Text += timeUnit.ToString() + " TU - Process Job #" + (timer) + newLine;
+                    compTime[timer - 1].Text = "Remaining " + (jTime[timer - 1] - 1).ToString() + " TU" + newLine;
                     jTime[timer - 1] -= 1;
                 }
 
@@ -356,40 +426,7 @@ namespace MemUI
                 {
                     timer = 0;
                 }
-            }
-            else if (allocated == 0) // memory has not been allocated
-            {
-                int n = 0;
-                while (n == 0) // moves to the next iteration if the given size is too big
-                {
-                    if (jSize[timer - 1] <= ramLeft) // if the current process size is less than the available space
-                    {
-                        memoryAlloc.Add(jSize[timer - 1]); // add to the memory
-                        compTime[timer - 1].Text = "Remaining " + (jTime[timer - 1] - 1).ToString() + " TU";
-                        holes.Add('p'); // p = process
-                        jTime[timer - 1] -= 1;
-                        ramLeft -= jSize[timer - 1];
-                        uPos.Add(positions[0]);
-                        positions.RemoveAt(0);
-                        lblPosition.Text = positions[0].ToString();
-
-                        if (jSize[timer] > ramLeft) // if the process' size is greater than the available memory
-                        {
-                            memoryAlloc.Add(ramLeft); // add the memory left as a 'hole'
-                            holes.Add('h'); // hole
-                            uPos.Add(9999);
-                            ramLeft -= ramLeft; // make this = 0
-                            timer = 0; //reset the timer
-                            allocated = 1; // all memory spaces have been allocated
-                        }
-                        n = 1; //breaks
-                    }
-                    else
-                    {
-                        timer++;
-                        n = 0; //loops
-                    }
-                }
+            }*/
             }
 
             timer++;
