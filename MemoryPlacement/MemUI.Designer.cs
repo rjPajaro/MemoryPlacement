@@ -129,6 +129,7 @@
             this.memoryBox = new System.Windows.Forms.TextBox();
             this.memLbl = new System.Windows.Forms.Label();
             this.ffStrat = new System.Windows.Forms.Timer(this.components);
+            this.lblPosition = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelFS
@@ -1050,12 +1051,22 @@
             // 
             this.ffStrat.Tick += new System.EventHandler(this.ffStrat_Tick_1);
             // 
+            // lblPosition
+            // 
+            this.lblPosition.AutoSize = true;
+            this.lblPosition.Location = new System.Drawing.Point(536, 76);
+            this.lblPosition.Name = "lblPosition";
+            this.lblPosition.Size = new System.Drawing.Size(66, 16);
+            this.lblPosition.TabIndex = 102;
+            this.lblPosition.Text = "positions: ";
+            // 
             // MemUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1122, 783);
+            this.Controls.Add(this.lblPosition);
             this.Controls.Add(this.memLbl);
             this.Controls.Add(this.memoryBox);
             this.Controls.Add(this.comboxMB);
@@ -1269,6 +1280,7 @@
         private System.Windows.Forms.TextBox memoryBox;
         private System.Windows.Forms.Label memLbl;
         private System.Windows.Forms.Timer ffStrat;
+        private System.Windows.Forms.Label lblPosition;
     }
 }
 

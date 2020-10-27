@@ -14,7 +14,9 @@ namespace MemUI
         private List<Label> compTime = new List<Label>();
         private List<int> jSize = new List<int>();
         private List<int> jTime = new List<int>();
+        private List<int> cTime = new List<int>();
         private List<int> positions = new List<int>();
+        private List<int> _completed = new List<int>();
         private List<char> holes = new List<char>();
         private FirstFit ff = new FirstFit();
         private BestFit bf = new BestFit();
@@ -119,7 +121,6 @@ namespace MemUI
             }
         }
 
-        private List<int> _completed = new List<int>();
         private void startButton_Click(object sender, EventArgs e) // This should also call the threadProc
         {
             programOutput.Enabled = true;
@@ -154,7 +155,7 @@ namespace MemUI
                 for (int i = 0; i < numOfJobs; i++)
                 {
                     compTime[i].Text = "Not Started";
-                    _completed.Add(0);
+                    //_completed.Add(0);
                     // To be added
                     {
                         /*if(Int32.Parse(jobs[i].Text) <= memory)
@@ -177,6 +178,7 @@ namespace MemUI
 
                 compInt = Int32.Parse(textboxComp.Text);
                 memLbl.Text += memory.ToString() + " KB";
+                cTime = jTime;
 
                 if (strategy.Equals("First Fit"))
                 {
@@ -224,19 +226,117 @@ namespace MemUI
         }
 
         private string newLine = Environment.NewLine;
-        private int reAlloc = 0, allocated = 0, timer = 1;
+        private int reAlloc = 0, allocated = 0, timer = 1, h = 0, reprocess = 0, smallest = 0;
 
         private List<int> memoryAlloc = new List<int>();
+        private List<int> uPos = new List<int>();
 
         private void ffStrat_Tick_1(object sender, EventArgs e)
         {
             int pCount = 0;
             timeUnit++;
-            if (allocated == 1) // memory has processes
+
+            if (reprocess == 1)
+                allocated = 2;
+
+            if (reAlloc == 1)
+            {
+                int m = 0;
+                int ct = 1;
+                int idx = holes.IndexOf('h');
+                while (m == 0)
+                {
+                    if (jSize[positions[ct-1]] <= memoryAlloc[idx])
+                    {
+                        memoryAlloc.Insert(idx, jSize[positions[ct-1]]);
+                        holes.Insert(idx, 'p');
+                        memoryAlloc[idx+1] -= memoryAlloc[idx];
+                        compTime[positions[ct-1]].Text = "Remaining " + (jTime[positions[ct-1]] - 1).ToString() + " TU";
+                        uPos.Insert(idx, positions[ct - 1]);
+                        smallest = uPos.IndexOf(uPos.Min());
+                        /*string text = "";
+                        for(int i = 0; i < uPos.Count(); i++)
+                        {
+                            text += uPos[i].ToString() + ", ";
+                        }*/
+                        //lblPosition.Text = text + " hmm"; // debugger
+                        allocated = -1;
+                        m = 1;
+
+                        h = holes.IndexOf('h');
+
+                        if(jSize[positions[ct]] > memoryAlloc[h])
+                        {
+                            reprocess = 1;
+                            allocated = -1;
+                            reAlloc = 0;
+                        }
+                        positions.RemoveAt(ct - 1);
+                    }
+                    else
+                    {
+                        ct++;
+                        m = 0;
+                    }
+                }
+            }
+
+            if (allocated == 2)
+            {
+                //lblPosition.Text = "this is called already"; // debugger
+                if (uPos[smallest] == 9999)
+                {
+                    smallest++;
+                    if (smallest >= uPos.Count())
+                    {
+                        smallest = 0;
+                    }
+                }
+                
+                if (jTime[uPos[smallest]]-1 == 0)
+                {
+                    _completed.Add(timeUnit);
+                    compTime[uPos[smallest]].Text = "Completed in " + (_completed[uPos[smallest]]).ToString() + " TU";
+                    holes[uPos[smallest]] = 'h';
+                    uPos[uPos[smallest]] = 9999;
+                    //reAlloc = 1;
+                }
+                else // TODO: does not decrement jobs 4 and 5
+                {
+                    compTime[uPos[smallest]].Text = "Remaining " + (jTime[uPos[smallest]] - 1).ToString() + " TU";
+                    jTime[uPos[smallest]] -= 1;
+                }
+                smallest++;
+
+
+                if (smallest >= uPos.Count())
+                    smallest = 0;
+
+                /*if (holes[h+1] == 'p')
+                {
+                    
+                }
+                else if(holes[h + 1] == 'h')
+                {
+                    //lblPosition.Text = "yikes"; // debugger
+                    h++;
+                }
+                else if(holes[h] == holes.Count())
+                {
+
+                }*/
+            }
+            else if (allocated == 1) // memory has processes
             {
                 if((jTime[timer - 1]-1) == 0) // if the process is complete, output the completion TU
                 {
-                    compTime[timer - 1].Text = "Completed in " + (timeUnit).ToString() + " TU"; // bug: time unit always updates when something completes
+                    _completed.Add(timeUnit);
+                    compTime[timer - 1].Text = "Completed in " + (_completed[timer-1]).ToString() + " TU";
+
+                    holes[timer - 1] = 'h';
+                    uPos[timer - 1] = 9999;
+                    //lblPosition.Text = uPos.Min().ToString();
+                    reAlloc = 1;
                 }
                 else // if the process is still running, subtract 1 to its TU
                 {
@@ -257,7 +357,7 @@ namespace MemUI
                     timer = 0;
                 }
             }
-            else if(allocated == 0) // memory has not been allocated
+            else if (allocated == 0) // memory has not been allocated
             {
                 int n = 0;
                 while (n == 0) // moves to the next iteration if the given size is too big
@@ -269,11 +369,15 @@ namespace MemUI
                         holes.Add('p'); // p = process
                         jTime[timer - 1] -= 1;
                         ramLeft -= jSize[timer - 1];
+                        uPos.Add(positions[0]);
+                        positions.RemoveAt(0);
+                        lblPosition.Text = positions[0].ToString();
 
                         if (jSize[timer] > ramLeft) // if the process' size is greater than the available memory
                         {
                             memoryAlloc.Add(ramLeft); // add the memory left as a 'hole'
                             holes.Add('h'); // hole
+                            uPos.Add(9999);
                             ramLeft -= ramLeft; // make this = 0
                             timer = 0; //reset the timer
                             allocated = 1; // all memory spaces have been allocated
@@ -289,11 +393,6 @@ namespace MemUI
             }
 
             timer++;
-            _ticks++;
-            if(_ticks == jSize.Count())
-            {
-                _ticks = 0;
-            }
             // Fail - might delete
             {
                 /*
