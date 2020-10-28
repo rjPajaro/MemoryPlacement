@@ -126,9 +126,10 @@
             this.job19Comp = new System.Windows.Forms.Label();
             this.job20Comp = new System.Windows.Forms.Label();
             this.comboxMB = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.memoryBox = new System.Windows.Forms.TextBox();
             this.memLbl = new System.Windows.Forms.Label();
             this.ffStrat = new System.Windows.Forms.Timer(this.components);
+            this.lblPosition = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelFS
@@ -185,16 +186,19 @@
             // 
             // textboxComp
             // 
+            this.textboxComp.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textboxComp.Location = new System.Drawing.Point(391, 43);
             this.textboxComp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textboxComp.Name = "textboxComp";
+            this.textboxComp.ReadOnly = true;
             this.textboxComp.Size = new System.Drawing.Size(69, 23);
             this.textboxComp.TabIndex = 5;
+            this.textboxComp.Text = "20";
             this.textboxComp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pauseButton
             // 
-            this.pauseButton.Location = new System.Drawing.Point(650, 673);
+            this.pauseButton.Location = new System.Drawing.Point(738, 656);
             this.pauseButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(87, 28);
@@ -205,7 +209,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(743, 667);
+            this.startButton.Location = new System.Drawing.Point(831, 650);
             this.startButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(87, 40);
@@ -216,7 +220,7 @@
             // 
             // abortButton
             // 
-            this.abortButton.Location = new System.Drawing.Point(836, 673);
+            this.abortButton.Location = new System.Drawing.Point(924, 656);
             this.abortButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.abortButton.Name = "abortButton";
             this.abortButton.Size = new System.Drawing.Size(87, 28);
@@ -805,6 +809,7 @@
             // 
             // textboxCoa
             // 
+            this.textboxCoa.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textboxCoa.Location = new System.Drawing.Point(392, 17);
             this.textboxCoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textboxCoa.Name = "textboxCoa";
@@ -816,7 +821,7 @@
             // 
             // programOutput
             // 
-            this.programOutput.Location = new System.Drawing.Point(466, 137);
+            this.programOutput.Location = new System.Drawing.Point(539, 149);
             this.programOutput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.programOutput.Multiline = true;
             this.programOutput.Name = "programOutput";
@@ -1024,19 +1029,19 @@
             this.comboxMB.TabIndex = 99;
             this.comboxMB.SelectedIndexChanged += new System.EventHandler(this.comboxMB_SelectedIndexChanged);
             // 
-            // textBox1
+            // memoryBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(848, 137);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 477);
-            this.textBox1.TabIndex = 100;
+            this.memoryBox.Location = new System.Drawing.Point(924, 149);
+            this.memoryBox.Multiline = true;
+            this.memoryBox.Name = "memoryBox";
+            this.memoryBox.Size = new System.Drawing.Size(174, 477);
+            this.memoryBox.TabIndex = 100;
             // 
             // memLbl
             // 
             this.memLbl.AutoSize = true;
             this.memLbl.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memLbl.Location = new System.Drawing.Point(848, 115);
+            this.memLbl.Location = new System.Drawing.Point(920, 127);
             this.memLbl.Name = "memLbl";
             this.memLbl.Size = new System.Drawing.Size(71, 19);
             this.memLbl.TabIndex = 101;
@@ -1046,14 +1051,24 @@
             // 
             this.ffStrat.Tick += new System.EventHandler(this.ffStrat_Tick_1);
             // 
+            // lblPosition
+            // 
+            this.lblPosition.AutoSize = true;
+            this.lblPosition.Location = new System.Drawing.Point(790, 42);
+            this.lblPosition.Name = "lblPosition";
+            this.lblPosition.Size = new System.Drawing.Size(66, 16);
+            this.lblPosition.TabIndex = 102;
+            this.lblPosition.Text = "positions: ";
+            // 
             // MemUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1092, 783);
+            this.ClientSize = new System.Drawing.Size(1122, 783);
+            this.Controls.Add(this.lblPosition);
             this.Controls.Add(this.memLbl);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.memoryBox);
             this.Controls.Add(this.comboxMB);
             this.Controls.Add(this.job20Comp);
             this.Controls.Add(this.job19Comp);
@@ -1154,6 +1169,7 @@
             this.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "MemUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Memory Management";
@@ -1261,9 +1277,10 @@
         private System.Windows.Forms.Label job19Comp;
         private System.Windows.Forms.Label job20Comp;
         private System.Windows.Forms.ComboBox comboxMB;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox memoryBox;
         private System.Windows.Forms.Label memLbl;
         private System.Windows.Forms.Timer ffStrat;
+        private System.Windows.Forms.Label lblPosition;
     }
 }
 
