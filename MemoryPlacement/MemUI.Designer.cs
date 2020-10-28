@@ -813,7 +813,6 @@
             this.textboxCoa.Location = new System.Drawing.Point(392, 17);
             this.textboxCoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textboxCoa.Name = "textboxCoa";
-            this.textboxCoa.ReadOnly = true;
             this.textboxCoa.Size = new System.Drawing.Size(69, 23);
             this.textboxCoa.TabIndex = 75;
             this.textboxCoa.Text = "1";
