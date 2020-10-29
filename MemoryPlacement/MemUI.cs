@@ -210,7 +210,7 @@ namespace MemUI
             if (strategy.Equals("First Fit"))
                 ffStrat.Stop();
             else if (strategy.Equals("Best Fit"))
-                bfStrat.Start();
+                bfStrat.Stop();
         }
 
         private void abortButton_Click(object sender, EventArgs e)
