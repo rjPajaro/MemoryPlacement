@@ -131,6 +131,7 @@
             this.ffStrat = new System.Windows.Forms.Timer(this.components);
             this.lblPosition = new System.Windows.Forms.Label();
             this.btnCont = new System.Windows.Forms.Button();
+            this.bfStrat = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // labelFS
@@ -191,10 +192,9 @@
             this.textboxComp.Location = new System.Drawing.Point(391, 43);
             this.textboxComp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textboxComp.Name = "textboxComp";
-            this.textboxComp.ReadOnly = true;
             this.textboxComp.Size = new System.Drawing.Size(69, 23);
             this.textboxComp.TabIndex = 5;
-            this.textboxComp.Text = "20";
+            this.textboxComp.Text = "1";
             this.textboxComp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pauseButton
@@ -1054,11 +1054,11 @@
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(790, 42);
+            this.lblPosition.Location = new System.Drawing.Point(567, 45);
             this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(66, 16);
+            this.lblPosition.Size = new System.Drawing.Size(135, 16);
             this.lblPosition.TabIndex = 102;
-            this.lblPosition.Text = "positions: ";
+            this.lblPosition.Text = "debugger (ignore this)";
             // 
             // btnCont
             // 
@@ -1069,6 +1069,10 @@
             this.btnCont.Text = "Continue";
             this.btnCont.UseVisualStyleBackColor = true;
             this.btnCont.Click += new System.EventHandler(this.btnCont_Click);
+            // 
+            // bfStrat
+            // 
+            this.bfStrat.Tick += new System.EventHandler(this.bfStrat_Tick);
             // 
             // MemUI
             // 
@@ -1293,6 +1297,7 @@
         private System.Windows.Forms.Timer ffStrat;
         private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.Button btnCont;
+        private System.Windows.Forms.Timer bfStrat;
     }
 }
 
