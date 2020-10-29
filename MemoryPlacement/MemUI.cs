@@ -14,14 +14,11 @@ namespace MemUI
         private List<Label> compTime = new List<Label>();
         private List<int> jSize = new List<int>();
         private List<int> jTime = new List<int>();
-        private List<int> cTime = new List<int>();
         private List<int> positions = new List<int>();
         private List<int> _completed = new List<int>();
         private List<char> holes = new List<char>();
-        private FirstFit ff = new FirstFit();
-        private BestFit bf = new BestFit();
         private double memory = 0;
-        private int numOfJobs = 0, compInt = 0, _ticks = 0, _complete = 0;
+        private int numOfJobs = 0, compInt = 0, _ticks = 0, _complete = 0, coalesce = 0;
         private string strategy;
         private int ramLeft = 0, timeDec = 0, procSize = 0, timeUnit = 0;
 
@@ -177,13 +174,18 @@ namespace MemUI
                 }
 
                 compInt = Int32.Parse(textboxComp.Text);
+                coalesce = Int32.Parse(textboxCoa.Text);
                 memLbl.Text += memory.ToString() + " KB";
-                cTime = jTime;
 
                 if (strategy.Equals("First Fit"))
                 {
-                    ffStrat.Interval = 1000;
+                    ffStrat.Interval = 700;
                     ffStrat.Start();
+                }
+                else if (strategy.Equals("Best Fit"))
+                {
+                    bfStrat.Interval = 700;
+                    bfStrat.Start();
                 }
             }
             catch // If there are missing values from the try block, it will clear all lists and output an error message
@@ -205,7 +207,10 @@ namespace MemUI
         private void pauseButton_Click(object sender, EventArgs e)
         {
             programOutput.Enabled = false;
-            ffStrat.Stop();
+            if (strategy.Equals("First Fit"))
+                ffStrat.Stop();
+            else if (strategy.Equals("Best Fit"))
+                bfStrat.Stop();
         }
 
         private void abortButton_Click(object sender, EventArgs e)
@@ -216,6 +221,36 @@ namespace MemUI
             jSize.Clear();
             jTime.Clear();
             memLbl.Text = "Memory: ";
+        }
+
+        private void btnCont_Click(object sender, EventArgs e)
+        {
+            programOutput.Enabled = true;
+            if(strategy.Equals("First Fit"))
+                ffStrat.Start();
+            else if (strategy.Equals("Best Fit"))
+                bfStrat.Start();
+        }
+
+        private void bfStrat_Tick(object sender, EventArgs e)
+        {
+            // TODO: BEST FIT STRAT HERE
+            //jSize; // Size Column (KB)
+            //jTime; // Time Unit Column (TU)
+            //compTime; // comp time (TU)
+            //numOfJobs; // Number of Jobs
+            //coalesce; // Coalesce Interval
+            //compInt; // Compression Interval
+            //programOuput.Text; // Big Box
+
+            /* -Queue Indian Tutorial- Hello guys, in order to add a next line in a textbox, \n does not work. 
+             So to create a nextline/newline, you must create a string (call it whatever) and initialize it to 
+             Environment.NewLine 
+             
+             ex: string newLine = Environment.NewLine;*/
+            // NOTE: Kahit i-press nalang yung start na walang values yung jobs at time boxes
+            // basta may laman yung fit strategy, memory size, and number of jobs. (default coal and comp interval)
+
         }
 
         private void comboxMB_SelectedIndexChanged(object sender, EventArgs e)
@@ -229,119 +264,184 @@ namespace MemUI
         }
 
         private string newLine = Environment.NewLine;
-        private int allocated = 0, timer = 1, smallest = 0;
+        private int allocated = 0, timer = 1, smallest = 0, _coal = 1;
 
         private List<int> memoryAlloc = new List<int>();
         private List<int> uPos = new List<int>();
 
         private void ffStrat_Tick_1(object sender, EventArgs e)
         {
-            timeUnit++; 
-            int hCount = 0;
-            List<int> coal = new List<int>();
-            for(int i = 0; i < holes.Count(); i++) // counts all the holes in the memory
+            timeUnit++;
+            if(_coal == coalesce)
             {
-                if(holes[i] == 'h')
-                {
-                    coal.Add(i); // adds the position of the hole to a list
-                    hCount++; // gets the count of holes
-                }
-            }
+                _coal = 0;
 
-            if (hCount > 1) // if there are more than 1 holes
-            {
-                // TODO: Coallescing
-            }
-            else if (hCount <= 1) // if there are no holes or less than 1 hole
-            {
-                if (allocated == 0) // memory has not been allocated
+                int hCount = 0;
+                List<int> coal = new List<int>();
+                for (int i = 0; i < holes.Count(); i++) // counts all the holes in the memory
                 {
-                    int n = 0;
-                    int h = holes.IndexOf('h');
-                    int pos = 0;
-                    while (n == 0) // moves to the next iteration if the given size is too big
+                    if (holes[i] == 'h')
                     {
-                        if (timer > jSize.Count())
+                        coal.Add(i); // adds the position of the hole to a list
+                        hCount++; // gets the count of holes
+                    }
+                }
+                
+                if (hCount > 1) // if there are more than 1 holes, check if the process shall be coalesced
+                {
+                    for(int i = 1; i < coal.Count(); i++)
+                    {
+                        if(coal[i-1]+1 == coal[i])
                         {
-                            timer = positions[0] + 1;
-                            allocated = 1; // all memory spaces have been allocated
-                            smallest = uPos.IndexOf(uPos.Min());
+                            // coalesce
+                            memoryAlloc[coal[i]] += memoryAlloc[coal[i - 1]];
+                            holes.RemoveAt(coal[i-1]);
+                            uPos.RemoveAt(coal[i-1]);
+                            memoryAlloc.RemoveAt(coal[i-1]);
+                            programOutput.Text += timeUnit.ToString() + " TU - Coalesce" + newLine;
+                            allocated = 0;
+                            if (positions.Count() > 0)
+                                timer = positions[0] + 1; // timer will be initalized to the first value of the position + 1
+
+                            string test = "";
+                            for (int x = 0; x < holes.Count(); x++)
+                            {
+                                test += holes[x] + " ";
+                            }
+
+                            lblPosition.Text = (test).ToString();
                             break;
-                        }
-                        if (jSize[timer - 1] <= memoryAlloc[h]) // if the current process size is less than the available space
-                        {
-                            memoryAlloc.Insert(h, jSize[timer - 1]); // add to the memory
-                            memoryAlloc[h + 1] -= memoryAlloc[h];
-                            compTime[timer - 1].Text = "Remaining " + (jTime[timer - 1] - 1).ToString() + " TU";
-                            programOutput.Text += timeUnit.ToString() + " TU - Allocate Job #" + (timer) + newLine;
-                            holes.Insert(h, 'p'); // p = process
-                            jTime[timer - 1] -= 1; // decrease by 1
-                            uPos.Insert(h, positions[pos]);
-
-                            positions.RemoveAt(pos);
-
-                            pos = 0;
-                            n = 1; //breaks
                         }
                         else
                         {
-                            timer++;
-                            pos++;
-                            n = 0; //loops
+                            hCount = 0; // continue process
                         }
                     }
-
-                    timer++;
                 }
-                if (allocated == 1)
+                if (hCount <= 1) // if there are no holes or less than 1 hole
                 {
-                    if (uPos[smallest] == 9999) // checks if the next item on the list to be processed is a hole or not (9999 = hole)
+                    if (allocated == 0) // memory has not been allocated/reallocated
                     {
-                        smallest++; //if the item on the list is a hole, increment the position by 1
-                        if (smallest >= uPos.Count()) // if it reaches the end of the list, position goes back to 0
+                        int n = 0;
+                        int h = holes.IndexOf('h');
+
+                        int pos = 0;
+                        Console.WriteLine("Size: " + memoryAlloc[h]);
+                        while (n == 0) // moves to the next iteration if the given size is too big
                         {
-                            smallest = 0;
+                            
+                            if (timer > jSize.Count())
+                            {
+                                if (positions.Count() >= 2)
+                                {
+                                    if ((positions[1] - positions[0]) == 1)
+                                    {
+                                        smallest = uPos.IndexOf(uPos.Min());
+                                    }
+                                    else
+                                    {
+                                        smallest = 0;
+                                    }
+                                }
+                                allocated = 1; // all memory spaces have been allocated
+                                break;
+                            }
+                            if (jSize[timer - 1] <= memoryAlloc[h]) // if the current process size is less than the available space
+                            {
+                                memoryAlloc.Insert(h, jSize[timer - 1]); // add to the memory
+                                memoryAlloc[h + 1] -= memoryAlloc[h];
+                                compTime[timer - 1].Text = "Remaining " + (jTime[timer - 1] - 1).ToString() + " TU";
+                                programOutput.Text += timeUnit.ToString() + " TU - Allocate Job #" + (timer) + newLine;
+                                holes.Insert(h, 'p'); // p = process
+                                jTime[timer - 1] -= 1; // decrease by 1
+                                uPos.Insert(h, positions[pos]);
+
+                                string test = "";
+                                for (int x = 0; x < holes.Count(); x++)
+                                {
+                                    test += holes[x] + " ";
+                                }
+                                lblPosition.Text = (test).ToString();
+                                positions.RemoveAt(pos);
+
+                                pos = 0;
+                                n = 1; //breaks
+                            }
+                            else
+                            {
+                                timer++;
+                                pos++;
+                                n = 0; //loops
+                            }
+                        }
+                        timer++;
+                    }
+                    if (allocated == 1)
+                    {
+                        int l = 0;
+                        while (l == 0)
+                        {
+                            if (smallest >= uPos.Count())
+                                smallest = 0;
+                            if (uPos[smallest] == 9999) // checks if the next item on the list to be processed is a hole or not (9999 = hole)
+                            {
+                                smallest++; //if the item on the list is a hole, increment the position by 1
+                                if (smallest >= uPos.Count()) // if it reaches the end of the list, position goes back to 0
+                                {
+                                    smallest = 0;
+                                }
+                                l = 0;
+                            }
+                            else
+                            {
+                                if (jTime[uPos[smallest]] - 1 == 0) // checks if the time unit to be decreased would be 0 (it means the process has been completed)
+                                {
+                                    _completed.Add(timeUnit); // adds the completed time units (prevents increment bug for completed times
+                                    compTime[uPos[smallest]].Text = "Completed in " + (_completed[_complete]).ToString() + " TU"; // outputs completion time
+                                    programOutput.Text += timeUnit.ToString() + " TU - Completed Job #" + (uPos[smallest]+1) + newLine; // output
+                                    holes[uPos.IndexOf(uPos[smallest])] = 'h'; // turns p to h meaning the process memory space has been freed up
+                                    uPos[uPos.IndexOf(uPos[smallest])] = 9999; // hole value = 9999
+                                    if(positions.Count() > 0)
+                                        timer = positions[0] + 1; // timer will be initalized to the first value of the position + 1
+                                    allocated = 0; //reallocate
+
+                                    _complete++;
+                                    string test = "";
+                                    for (int x = 0; x < holes.Count(); x++)
+                                    {
+                                        test += holes[x] + " ";
+                                    }
+
+                                    lblPosition.Text = (test).ToString();
+                                }
+                                else // continue to process...
+                                {
+                                    string test = ""; // debugger
+                                    for (int i = 0; i < uPos.Count(); i++)
+                                    {
+                                        test += uPos[i].ToString() + " ";
+                                    }
+                                    //lblPosition.Text = test.ToString();
+                                    compTime[uPos[smallest]].Text = "Remaining " + (jTime[uPos[smallest]] - 1).ToString() + " TU"; // decrease by 1
+                                    programOutput.Text += timeUnit.ToString() + " TU - Process Job #" + (uPos[smallest] + 1) + newLine;
+                                    jTime[uPos[smallest]] -= 1; // store time value decreased by 1
+                                }
+
+                                smallest++;
+                                if (smallest >= uPos.Count())
+                                    smallest = 0;
+                                l = 1;
+                            }
                         }
                     }
-
-                    if (jTime[uPos[smallest]] - 1 == 0) // checks if the time unit to be decreased would be 0 (it means the process has been completed)
-                    {
-                        _completed.Add(timeUnit); // adds the completed time units (prevents increment bug for completed times
-                        compTime[uPos[smallest]].Text = "Completed in " + (_completed[uPos[smallest]]).ToString() + " TU"; // outputs completion time
-                        programOutput.Text += timeUnit.ToString() + " TU - Completed Job #" + (uPos[smallest] + 1) + newLine; // output
-                        holes[uPos[smallest]] = 'h'; // turns p to h meaning the process memory space has been freed up
-                        uPos[uPos[smallest]] = 9999; // hole value = 9999
-                        timer = positions[0] + 1; // timer will be initalized to the first value of the position + 1
-                        allocated = 0; //reallocate
-
-                        string test = ""; //debugger
-                        for (int i = 0; i < positions.Count(); i++)
-                        {
-                            test += positions[i].ToString() + " ";
-                        }
-                        //lblPosition.Text = test.ToString();
-                    }
-                    else // continue to process...
-                    {
-                        string test = ""; // debugger
-                        for (int i = 0; i < uPos.Count(); i++)
-                        {
-                            test += uPos[i].ToString() + " ";
-                        }
-                        //lblPosition.Text = test.ToString();
-                        compTime[uPos[smallest]].Text = "Remaining " + (jTime[uPos[smallest]] - 1).ToString() + " TU"; // decrease by 1
-                        programOutput.Text += timeUnit.ToString() + " TU - Process Job #" + (uPos[smallest] + 1) + newLine;
-                        jTime[uPos[smallest]] -= 1; // store time value decreased by 1
-                    }
-
-                    smallest++;
-                    if (smallest >= uPos.Count())
-                        smallest = 0;
                 }
             }
-
-            
-        
+            if(_completed.Count() == numOfJobs)
+            {
+                programOutput.Text += "-- Finished --";
+                ffStrat.Stop();
+            }
+            _coal++;
         }
 
         private void comboxFS_SelectedIndexChanged(object sender, EventArgs e)
