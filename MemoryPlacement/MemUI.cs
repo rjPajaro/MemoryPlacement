@@ -340,8 +340,8 @@ namespace MemUI
                                 if (jTime[uPos[smallest]] - 1 == 0) // checks if the time unit to be decreased would be 0 (it means the process has been completed)
                                 {
                                     _completed.Add(timeUnit); // adds the completed time units (prevents increment bug for completed times
-                                    compTime[uPos.IndexOf(uPos.Min())].Text = "Completed in " + (uPos.IndexOf(uPos.Min())).ToString() + " TU"; // outputs completion time
-                                    programOutput.Text += timeUnit.ToString() + " TU - Completed Job #" + (uPos.IndexOf(uPos.Min())+1) + newLine; // output
+                                    compTime[uPos[smallest]].Text = "Completed in " + (timeUnit).ToString() + " TU"; // outputs completion time // TODO: ERROR HERE //
+                                    programOutput.Text += timeUnit.ToString() + " TU - Completed Job #" + (uPos.Min()+1) + newLine; // output
                                     holes[uPos.IndexOf(uPos.Min())] = 'h'; // turns p to h meaning the process memory space has been freed up
                                     uPos[uPos.IndexOf(uPos.Min())] = 9999; // hole value = 9999
                                     timer = positions[0] + 1; // timer will be initalized to the first value of the position + 1
