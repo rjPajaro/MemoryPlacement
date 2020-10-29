@@ -130,6 +130,7 @@
             this.memLbl = new System.Windows.Forms.Label();
             this.ffStrat = new System.Windows.Forms.Timer(this.components);
             this.lblPosition = new System.Windows.Forms.Label();
+            this.btnCont = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelFS
@@ -198,7 +199,7 @@
             // 
             // pauseButton
             // 
-            this.pauseButton.Location = new System.Drawing.Point(738, 656);
+            this.pauseButton.Location = new System.Drawing.Point(738, 648);
             this.pauseButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(87, 28);
@@ -209,10 +210,10 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(831, 650);
+            this.startButton.Location = new System.Drawing.Point(831, 648);
             this.startButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(87, 40);
+            this.startButton.Size = new System.Drawing.Size(87, 59);
             this.startButton.TabIndex = 7;
             this.startButton.Text = "START";
             this.startButton.UseVisualStyleBackColor = true;
@@ -220,10 +221,10 @@
             // 
             // abortButton
             // 
-            this.abortButton.Location = new System.Drawing.Point(924, 656);
+            this.abortButton.Location = new System.Drawing.Point(924, 648);
             this.abortButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.abortButton.Name = "abortButton";
-            this.abortButton.Size = new System.Drawing.Size(87, 28);
+            this.abortButton.Size = new System.Drawing.Size(87, 59);
             this.abortButton.TabIndex = 8;
             this.abortButton.Text = "Abort";
             this.abortButton.UseVisualStyleBackColor = true;
@@ -1059,12 +1060,23 @@
             this.lblPosition.TabIndex = 102;
             this.lblPosition.Text = "positions: ";
             // 
+            // btnCont
+            // 
+            this.btnCont.Location = new System.Drawing.Point(738, 679);
+            this.btnCont.Name = "btnCont";
+            this.btnCont.Size = new System.Drawing.Size(87, 28);
+            this.btnCont.TabIndex = 103;
+            this.btnCont.Text = "Continue";
+            this.btnCont.UseVisualStyleBackColor = true;
+            this.btnCont.Click += new System.EventHandler(this.btnCont_Click);
+            // 
             // MemUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1122, 783);
+            this.Controls.Add(this.btnCont);
             this.Controls.Add(this.lblPosition);
             this.Controls.Add(this.memLbl);
             this.Controls.Add(this.memoryBox);
@@ -1280,6 +1292,7 @@
         private System.Windows.Forms.Label memLbl;
         private System.Windows.Forms.Timer ffStrat;
         private System.Windows.Forms.Label lblPosition;
+        private System.Windows.Forms.Button btnCont;
     }
 }
 
