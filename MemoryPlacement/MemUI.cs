@@ -235,13 +235,13 @@ namespace MemUI
         private void bfStrat_Tick(object sender, EventArgs e)
         {
             // TODO: BEST FIT STRAT HERE
-            jSize; // Size Column (KB)
-            jTime; // Time Unit Column (TU)
-            compTime; // comp time (TU)
-            numOfJobs; // Number of Jobs
-            coalesce; // Coalesce Interval
-            compInt; // Compression Interval
-            programOuput.Text; // Big Box
+            //jSize; // Size Column (KB)
+            //jTime; // Time Unit Column (TU)
+            //compTime; // comp time (TU)
+            //numOfJobs; // Number of Jobs
+            //coalesce; // Coalesce Interval
+            //compInt; // Compression Interval
+            //programOuput.Text; // Big Box
 
             /* -Queue Indian Tutorial- Hello guys, in order to add a next line in a textbox, \n does not work. 
              So to create a nextline/newline, you must create a string (call it whatever) and initialize it to 
@@ -249,7 +249,7 @@ namespace MemUI
              
              ex: string newLine = Environment.NewLine;*/
             // NOTE: Kahit i-press nalang yung start na walang values yung jobs at time boxes
-            //  basta may laman yung fit strategy, memory size, and number of jobs. (default coal and comp interval)
+            // basta may laman yung fit strategy, memory size, and number of jobs. (default coal and comp interval)
 
         }
 
@@ -297,7 +297,7 @@ namespace MemUI
                             memoryAlloc[coal[i]] += memoryAlloc[coal[i - 1]];
                             holes.RemoveAt(coal[i-1]);
                             uPos.RemoveAt(coal[i-1]);
-                            memoryAlloc.RemoveAt(coal[i - 1]);
+                            memoryAlloc.RemoveAt(coal[i-1]);
                             programOutput.Text += timeUnit.ToString() + " TU - Coalesce" + newLine;
                             allocated = 0;
                             if (positions.Count() > 0)
@@ -306,10 +306,10 @@ namespace MemUI
                             string test = "";
                             for (int x = 0; x < holes.Count(); x++)
                             {
-                                test += uPos[x] + " ";
+                                test += holes[x] + " ";
                             }
 
-                            lblPosition.Text = (smallest).ToString();
+                            lblPosition.Text = (test).ToString();
                             break;
                         }
                         else
@@ -324,9 +324,12 @@ namespace MemUI
                     {
                         int n = 0;
                         int h = holes.IndexOf('h');
+
                         int pos = 0;
+                        Console.WriteLine("Size: " + memoryAlloc[h]);
                         while (n == 0) // moves to the next iteration if the given size is too big
                         {
+                            
                             if (timer > jSize.Count())
                             {
                                 if (positions.Count() >= 2)
@@ -356,10 +359,9 @@ namespace MemUI
                                 string test = "";
                                 for (int x = 0; x < holes.Count(); x++)
                                 {
-                                    test += uPos[x] + " ";
+                                    test += holes[x] + " ";
                                 }
-
-                                //lblPosition.Text = (test).ToString();
+                                lblPosition.Text = (test).ToString();
                                 positions.RemoveAt(pos);
 
                                 pos = 0;
@@ -379,6 +381,8 @@ namespace MemUI
                         int l = 0;
                         while (l == 0)
                         {
+                            if (smallest >= uPos.Count())
+                                smallest = 0;
                             if (uPos[smallest] == 9999) // checks if the next item on the list to be processed is a hole or not (9999 = hole)
                             {
                                 smallest++; //if the item on the list is a hole, increment the position by 1
@@ -393,7 +397,7 @@ namespace MemUI
                                 if (jTime[uPos[smallest]] - 1 == 0) // checks if the time unit to be decreased would be 0 (it means the process has been completed)
                                 {
                                     _completed.Add(timeUnit); // adds the completed time units (prevents increment bug for completed times
-                                    compTime[uPos[smallest]].Text = "Completed in " + (timeUnit).ToString() + " TU"; // outputs completion time // TODO: ERROR HERE //
+                                    compTime[uPos[smallest]].Text = "Completed in " + (_completed[_complete]).ToString() + " TU"; // outputs completion time
                                     programOutput.Text += timeUnit.ToString() + " TU - Completed Job #" + (uPos[smallest]+1) + newLine; // output
                                     holes[uPos.IndexOf(uPos[smallest])] = 'h'; // turns p to h meaning the process memory space has been freed up
                                     uPos[uPos.IndexOf(uPos[smallest])] = 9999; // hole value = 9999
@@ -401,13 +405,14 @@ namespace MemUI
                                         timer = positions[0] + 1; // timer will be initalized to the first value of the position + 1
                                     allocated = 0; //reallocate
 
+                                    _complete++;
                                     string test = "";
                                     for (int x = 0; x < holes.Count(); x++)
                                     {
-                                        test += uPos[x] + " ";
+                                        test += holes[x] + " ";
                                     }
 
-                                    //lblPosition.Text = (smallest).ToString();
+                                    lblPosition.Text = (test).ToString();
                                 }
                                 else // continue to process...
                                 {

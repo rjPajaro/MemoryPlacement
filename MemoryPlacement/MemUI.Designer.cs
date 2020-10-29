@@ -1034,7 +1034,7 @@
             this.memoryBox.Location = new System.Drawing.Point(924, 149);
             this.memoryBox.Multiline = true;
             this.memoryBox.Name = "memoryBox";
-            this.memoryBox.Size = new System.Drawing.Size(174, 477);
+            this.memoryBox.Size = new System.Drawing.Size(174, 492);
             this.memoryBox.TabIndex = 100;
             // 
             // memLbl
