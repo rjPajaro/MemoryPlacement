@@ -126,7 +126,7 @@ namespace MemUI
             }
         }
 
-        private void startButton_Click(object sender, EventArgs e) // This should also call the threadProc
+        private void startButton_Click(object sender, EventArgs e)
         {
             programOutput.Enabled = true;
             startButton.Enabled = false; //when the programOutput is ready
@@ -142,8 +142,8 @@ namespace MemUI
             try
             {
                 // For Testing (Debugging)
-                {/*
-                    jSize.Add(500);
+                {
+                    /*jSize.Add(500);
                     jSize.Add(250);
                     jSize.Add(200);
                     jSize.Add(350);
@@ -158,7 +158,7 @@ namespace MemUI
                     jTime.Add(5);
                     jTime.Add(3);
                     jTime.Add(2);
-                */
+                    */
                 }
                 
                 for (int i = 0; i < numOfJobs; i++)
@@ -313,7 +313,7 @@ namespace MemUI
             holes.Add('h');
             uPos.Add(9999);
         }
-
+       
         private void ffStrat_Tick_1(object sender, EventArgs e)
         {
             timeUnit++;
@@ -331,7 +331,7 @@ namespace MemUI
                         for (int i = 0; i < holes.Count(); i++) // pushes all the job indexes
                         {
                             if (holes[i].Equals('p'))
-                            {
+                            { 
                                 compCount++;
                                 compression.Add(memoryAlloc[i]);
                             }
@@ -368,7 +368,7 @@ namespace MemUI
                     string test = "";
                     for (int i = 0; i < holes.Count(); i++)
                     {
-                        test += holes[i] + "";
+                        test += uPos[i] + "";
                     }
 
                     Console.WriteLine(test);
@@ -380,6 +380,13 @@ namespace MemUI
                         compressor = 0;
                         allocated = 0;
                         compress = false;
+                        string t = "";
+                        for (int i = 0; i < holes.Count(); i++)
+                        {
+                            t += uPos[i] + "";
+                        }
+
+                        Console.WriteLine(t);
                     }
                 }
 
@@ -542,6 +549,73 @@ namespace MemUI
             }
             else // this is only called when there is no coalescing happening during the current time unit.
             {
+                if (compress == true) // Compress when the compress variable reaches the given Compression Interval by the user
+                {
+                    //1st: get the index of the highest value that is a job in the queue... Yes.
+                    //2nd: compress will only turn false if all the processes have been arranged in order.
+                    if (cCheck == 0)
+                    {
+                        for (int i = 0; i < holes.Count(); i++) // pushes all the job indexes
+                        {
+                            if (holes[i].Equals('p'))
+                            {
+                                compCount++;
+                                compression.Add(memoryAlloc[i]);
+                            }
+                        }
+                    }
+
+                    if (compression.Count() > 1)
+                    {
+                        int m = memoryAlloc.IndexOf(compression.Max()); // grabs the highest value from the memory
+                        memoryAlloc.Insert(cCheck, memoryAlloc[m]); // copies the highest value in the memory to the beginning of the list
+                        memoryAlloc.RemoveAt(m + 1); // removes its original copy from the list
+                        holes.Insert(cCheck, holes[m]); //puts p at the beginning
+                        holes.RemoveAt(m + 1);
+                        uPos.Insert(cCheck, uPos[m]); // puts the position of the highest value at the beginning
+                        uPos.RemoveAt(m + 1);
+
+                        compression.RemoveAt(compression.IndexOf(compression.Max())); // pop!
+                        programOutput.Text += timeUnit.ToString() + " TU - Compress" + newLine; // output
+                    }
+                    else if (compression.Count() == 1) // for when there's only 1 value to compress
+                    {
+                        int m = memoryAlloc.IndexOf(compression[0]);
+                        memoryAlloc.Insert(cCheck, memoryAlloc[m]);
+                        memoryAlloc.RemoveAt(m + 1);
+                        holes.Insert(cCheck, holes[m]);
+                        holes.RemoveAt(m + 1);
+                        uPos.Insert(cCheck, uPos[m]);
+                        uPos.RemoveAt(m + 1);
+
+                        compression.RemoveAt(0);
+                        programOutput.Text += timeUnit.ToString() + " TU - Compress" + newLine;
+                    }
+
+                    string test = "";
+                    for (int i = 0; i < holes.Count(); i++)
+                    {
+                        test += uPos[i] + "";
+                    }
+
+                    Console.WriteLine(test);
+                    cCheck++; // increments up to how many process are there to compress
+                    if (cCheck == compCount) // stops compressing once it reaches the number of processes
+                    {
+                        compression.Clear();
+                        cCheck = 0;
+                        compressor = 0;
+                        allocated = 0;
+                        compress = false;
+                        string t = "";
+                        for (int i = 0; i < holes.Count(); i++)
+                        {
+                            t += uPos[i] + "";
+                        }
+
+                        Console.WriteLine(t);
+                    }
+                }
                 if (allocated == 0) // memory has not been allocated/reallocated
                 {
                     int n = 0;
@@ -656,6 +730,13 @@ namespace MemUI
                 btnCont.Enabled = false;
                 pauseButton.Enabled = false;
                 startButton.Enabled = true;
+                holes.Clear();
+                uPos.Clear();
+                memoryAlloc.Clear();
+                memoryAlloc.Add(ramLeft);
+                holes.Add('h');
+                uPos.Add(9999);
+
                 ffStrat.Stop();
             }
 
