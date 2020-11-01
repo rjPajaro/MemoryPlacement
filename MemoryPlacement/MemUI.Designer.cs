@@ -70,36 +70,6 @@
             this.job9T = new System.Windows.Forms.TextBox();
             this.job10S = new System.Windows.Forms.TextBox();
             this.job10T = new System.Windows.Forms.TextBox();
-            this.job11S = new System.Windows.Forms.TextBox();
-            this.job11T = new System.Windows.Forms.TextBox();
-            this.job12S = new System.Windows.Forms.TextBox();
-            this.job12T = new System.Windows.Forms.TextBox();
-            this.job13S = new System.Windows.Forms.TextBox();
-            this.job13T = new System.Windows.Forms.TextBox();
-            this.job14S = new System.Windows.Forms.TextBox();
-            this.job14T = new System.Windows.Forms.TextBox();
-            this.job15S = new System.Windows.Forms.TextBox();
-            this.job15T = new System.Windows.Forms.TextBox();
-            this.job16S = new System.Windows.Forms.TextBox();
-            this.job16T = new System.Windows.Forms.TextBox();
-            this.job17S = new System.Windows.Forms.TextBox();
-            this.job17T = new System.Windows.Forms.TextBox();
-            this.job18S = new System.Windows.Forms.TextBox();
-            this.job18T = new System.Windows.Forms.TextBox();
-            this.job19S = new System.Windows.Forms.TextBox();
-            this.job19T = new System.Windows.Forms.TextBox();
-            this.job20S = new System.Windows.Forms.TextBox();
-            this.job20T = new System.Windows.Forms.TextBox();
-            this.labelJ20 = new System.Windows.Forms.Label();
-            this.labelJ19 = new System.Windows.Forms.Label();
-            this.labelJ18 = new System.Windows.Forms.Label();
-            this.labelJ17 = new System.Windows.Forms.Label();
-            this.labelJ16 = new System.Windows.Forms.Label();
-            this.labelJ15 = new System.Windows.Forms.Label();
-            this.labelJ14 = new System.Windows.Forms.Label();
-            this.labelJ13 = new System.Windows.Forms.Label();
-            this.labelJ12 = new System.Windows.Forms.Label();
-            this.labelJ11 = new System.Windows.Forms.Label();
             this.labelMS = new System.Windows.Forms.Label();
             this.labelCoa = new System.Windows.Forms.Label();
             this.textboxCoa = new System.Windows.Forms.TextBox();
@@ -115,30 +85,25 @@
             this.job8Comp = new System.Windows.Forms.Label();
             this.job9Comp = new System.Windows.Forms.Label();
             this.job10Comp = new System.Windows.Forms.Label();
-            this.job11Comp = new System.Windows.Forms.Label();
-            this.job12Comp = new System.Windows.Forms.Label();
-            this.job13Comp = new System.Windows.Forms.Label();
-            this.job14Comp = new System.Windows.Forms.Label();
-            this.job15Comp = new System.Windows.Forms.Label();
-            this.job16Comp = new System.Windows.Forms.Label();
-            this.job17Comp = new System.Windows.Forms.Label();
-            this.job18Comp = new System.Windows.Forms.Label();
-            this.job19Comp = new System.Windows.Forms.Label();
-            this.job20Comp = new System.Windows.Forms.Label();
             this.comboxMB = new System.Windows.Forms.ComboBox();
-            this.memoryBox = new System.Windows.Forms.TextBox();
             this.memLbl = new System.Windows.Forms.Label();
             this.ffStrat = new System.Windows.Forms.Timer(this.components);
-            this.lblPosition = new System.Windows.Forms.Label();
             this.btnCont = new System.Windows.Forms.Button();
             this.bfStrat = new System.Windows.Forms.Timer(this.components);
+            this.comboxComp = new System.Windows.Forms.ComboBox();
+            this.comboxCoal = new System.Windows.Forms.ComboBox();
+            this.coalChoice = new System.Windows.Forms.ComboBox();
+            this.compChoice = new System.Windows.Forms.ComboBox();
+            this.memVis = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelFS
             // 
+            this.labelFS.AllowDrop = true;
+            this.labelFS.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelFS.AutoSize = true;
             this.labelFS.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFS.Location = new System.Drawing.Point(58, 19);
+            this.labelFS.Location = new System.Drawing.Point(71, 25);
             this.labelFS.Name = "labelFS";
             this.labelFS.Size = new System.Drawing.Size(76, 16);
             this.labelFS.TabIndex = 0;
@@ -146,9 +111,11 @@
             // 
             // labelNJ
             // 
+            this.labelNJ.AllowDrop = true;
+            this.labelNJ.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelNJ.AutoSize = true;
             this.labelNJ.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNJ.Location = new System.Drawing.Point(33, 71);
+            this.labelNJ.Location = new System.Drawing.Point(46, 77);
             this.labelNJ.Name = "labelNJ";
             this.labelNJ.Size = new System.Drawing.Size(103, 16);
             this.labelNJ.TabIndex = 1;
@@ -156,9 +123,11 @@
             // 
             // labelComp
             // 
+            this.labelComp.AllowDrop = true;
+            this.labelComp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelComp.AutoSize = true;
             this.labelComp.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelComp.Location = new System.Drawing.Point(223, 46);
+            this.labelComp.Location = new System.Drawing.Point(236, 52);
             this.labelComp.Name = "labelComp";
             this.labelComp.Size = new System.Drawing.Size(163, 16);
             this.labelComp.TabIndex = 2;
@@ -166,9 +135,11 @@
             // 
             // comboxFS
             // 
+            this.comboxFS.AllowDrop = true;
+            this.comboxFS.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboxFS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboxFS.FormattingEnabled = true;
-            this.comboxFS.Location = new System.Drawing.Point(138, 16);
+            this.comboxFS.Location = new System.Drawing.Point(151, 23);
             this.comboxFS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboxFS.Name = "comboxFS";
             this.comboxFS.Size = new System.Drawing.Size(69, 24);
@@ -177,9 +148,11 @@
             // 
             // comboxNJ
             // 
+            this.comboxNJ.AllowDrop = true;
+            this.comboxNJ.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboxNJ.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboxNJ.FormattingEnabled = true;
-            this.comboxNJ.Location = new System.Drawing.Point(138, 68);
+            this.comboxNJ.Location = new System.Drawing.Point(151, 73);
             this.comboxNJ.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboxNJ.Name = "comboxNJ";
             this.comboxNJ.Size = new System.Drawing.Size(69, 24);
@@ -188,21 +161,25 @@
             // 
             // textboxComp
             // 
+            this.textboxComp.AllowDrop = true;
+            this.textboxComp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textboxComp.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textboxComp.Location = new System.Drawing.Point(391, 43);
+            this.textboxComp.Location = new System.Drawing.Point(404, 51);
             this.textboxComp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textboxComp.Name = "textboxComp";
-            this.textboxComp.Size = new System.Drawing.Size(69, 23);
+            this.textboxComp.Size = new System.Drawing.Size(70, 23);
             this.textboxComp.TabIndex = 5;
-            this.textboxComp.Text = "1";
+            this.textboxComp.Text = "10";
             this.textboxComp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pauseButton
             // 
-            this.pauseButton.Location = new System.Drawing.Point(738, 648);
+            this.pauseButton.AllowDrop = true;
+            this.pauseButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pauseButton.Location = new System.Drawing.Point(375, 469);
             this.pauseButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pauseButton.Name = "pauseButton";
-            this.pauseButton.Size = new System.Drawing.Size(87, 28);
+            this.pauseButton.Size = new System.Drawing.Size(66, 28);
             this.pauseButton.TabIndex = 6;
             this.pauseButton.Text = "Pause";
             this.pauseButton.UseVisualStyleBackColor = true;
@@ -210,7 +187,9 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(831, 648);
+            this.startButton.AllowDrop = true;
+            this.startButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.startButton.Location = new System.Drawing.Point(449, 469);
             this.startButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(87, 59);
@@ -221,20 +200,24 @@
             // 
             // abortButton
             // 
-            this.abortButton.Location = new System.Drawing.Point(924, 648);
+            this.abortButton.AllowDrop = true;
+            this.abortButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.abortButton.Location = new System.Drawing.Point(542, 469);
             this.abortButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.abortButton.Name = "abortButton";
-            this.abortButton.Size = new System.Drawing.Size(87, 59);
+            this.abortButton.Size = new System.Drawing.Size(107, 59);
             this.abortButton.TabIndex = 8;
-            this.abortButton.Text = "Abort";
+            this.abortButton.Text = "Abort/Restart";
             this.abortButton.UseVisualStyleBackColor = true;
             this.abortButton.Click += new System.EventHandler(this.abortButton_Click);
             // 
             // labelJ1
             // 
+            this.labelJ1.AllowDrop = true;
+            this.labelJ1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelJ1.AutoSize = true;
             this.labelJ1.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ1.Location = new System.Drawing.Point(26, 160);
+            this.labelJ1.Location = new System.Drawing.Point(39, 167);
             this.labelJ1.Name = "labelJ1";
             this.labelJ1.Size = new System.Drawing.Size(36, 16);
             this.labelJ1.TabIndex = 9;
@@ -242,8 +225,10 @@
             // 
             // labelJ2
             // 
+            this.labelJ2.AllowDrop = true;
+            this.labelJ2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelJ2.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ2.Location = new System.Drawing.Point(23, 191);
+            this.labelJ2.Location = new System.Drawing.Point(36, 197);
             this.labelJ2.Name = "labelJ2";
             this.labelJ2.Size = new System.Drawing.Size(41, 16);
             this.labelJ2.TabIndex = 0;
@@ -251,9 +236,11 @@
             // 
             // labelJ3
             // 
+            this.labelJ3.AllowDrop = true;
+            this.labelJ3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelJ3.AutoSize = true;
             this.labelJ3.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ3.Location = new System.Drawing.Point(23, 222);
+            this.labelJ3.Location = new System.Drawing.Point(36, 228);
             this.labelJ3.Name = "labelJ3";
             this.labelJ3.Size = new System.Drawing.Size(39, 16);
             this.labelJ3.TabIndex = 10;
@@ -261,9 +248,11 @@
             // 
             // labelJ4
             // 
+            this.labelJ4.AllowDrop = true;
+            this.labelJ4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelJ4.AutoSize = true;
             this.labelJ4.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ4.Location = new System.Drawing.Point(23, 253);
+            this.labelJ4.Location = new System.Drawing.Point(36, 259);
             this.labelJ4.Name = "labelJ4";
             this.labelJ4.Size = new System.Drawing.Size(39, 16);
             this.labelJ4.TabIndex = 11;
@@ -271,9 +260,11 @@
             // 
             // labelJ5
             // 
+            this.labelJ5.AllowDrop = true;
+            this.labelJ5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelJ5.AutoSize = true;
             this.labelJ5.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ5.Location = new System.Drawing.Point(23, 284);
+            this.labelJ5.Location = new System.Drawing.Point(36, 289);
             this.labelJ5.Name = "labelJ5";
             this.labelJ5.Size = new System.Drawing.Size(39, 16);
             this.labelJ5.TabIndex = 12;
@@ -281,9 +272,11 @@
             // 
             // labelJ6
             // 
+            this.labelJ6.AllowDrop = true;
+            this.labelJ6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelJ6.AutoSize = true;
             this.labelJ6.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ6.Location = new System.Drawing.Point(23, 315);
+            this.labelJ6.Location = new System.Drawing.Point(36, 321);
             this.labelJ6.Name = "labelJ6";
             this.labelJ6.Size = new System.Drawing.Size(39, 16);
             this.labelJ6.TabIndex = 13;
@@ -291,9 +284,11 @@
             // 
             // labelJ7
             // 
+            this.labelJ7.AllowDrop = true;
+            this.labelJ7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelJ7.AutoSize = true;
             this.labelJ7.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ7.Location = new System.Drawing.Point(23, 346);
+            this.labelJ7.Location = new System.Drawing.Point(36, 352);
             this.labelJ7.Name = "labelJ7";
             this.labelJ7.Size = new System.Drawing.Size(39, 16);
             this.labelJ7.TabIndex = 14;
@@ -301,9 +296,11 @@
             // 
             // labelJ8
             // 
+            this.labelJ8.AllowDrop = true;
+            this.labelJ8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelJ8.AutoSize = true;
             this.labelJ8.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ8.Location = new System.Drawing.Point(23, 377);
+            this.labelJ8.Location = new System.Drawing.Point(36, 383);
             this.labelJ8.Name = "labelJ8";
             this.labelJ8.Size = new System.Drawing.Size(39, 16);
             this.labelJ8.TabIndex = 15;
@@ -311,9 +308,11 @@
             // 
             // labelJ9
             // 
+            this.labelJ9.AllowDrop = true;
+            this.labelJ9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelJ9.AutoSize = true;
             this.labelJ9.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ9.Location = new System.Drawing.Point(23, 408);
+            this.labelJ9.Location = new System.Drawing.Point(36, 415);
             this.labelJ9.Name = "labelJ9";
             this.labelJ9.Size = new System.Drawing.Size(39, 16);
             this.labelJ9.TabIndex = 16;
@@ -321,9 +320,11 @@
             // 
             // labelJ10
             // 
+            this.labelJ10.AllowDrop = true;
+            this.labelJ10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelJ10.AutoSize = true;
             this.labelJ10.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ10.Location = new System.Drawing.Point(19, 439);
+            this.labelJ10.Location = new System.Drawing.Point(32, 445);
             this.labelJ10.Name = "labelJ10";
             this.labelJ10.Size = new System.Drawing.Size(43, 16);
             this.labelJ10.TabIndex = 17;
@@ -331,7 +332,9 @@
             // 
             // job1S
             // 
-            this.job1S.Location = new System.Drawing.Point(68, 157);
+            this.job1S.AllowDrop = true;
+            this.job1S.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job1S.Location = new System.Drawing.Point(81, 163);
             this.job1S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job1S.Name = "job1S";
             this.job1S.Size = new System.Drawing.Size(68, 23);
@@ -340,7 +343,9 @@
             // 
             // job1T
             // 
-            this.job1T.Location = new System.Drawing.Point(142, 157);
+            this.job1T.AllowDrop = true;
+            this.job1T.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job1T.Location = new System.Drawing.Point(155, 163);
             this.job1T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job1T.Name = "job1T";
             this.job1T.Size = new System.Drawing.Size(68, 23);
@@ -349,7 +354,9 @@
             // 
             // job2S
             // 
-            this.job2S.Location = new System.Drawing.Point(68, 188);
+            this.job2S.AllowDrop = true;
+            this.job2S.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job2S.Location = new System.Drawing.Point(81, 193);
             this.job2S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job2S.Name = "job2S";
             this.job2S.Size = new System.Drawing.Size(68, 23);
@@ -358,7 +365,9 @@
             // 
             // job2T
             // 
-            this.job2T.Location = new System.Drawing.Point(142, 188);
+            this.job2T.AllowDrop = true;
+            this.job2T.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job2T.Location = new System.Drawing.Point(155, 193);
             this.job2T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job2T.Name = "job2T";
             this.job2T.Size = new System.Drawing.Size(68, 23);
@@ -367,7 +376,9 @@
             // 
             // job3S
             // 
-            this.job3S.Location = new System.Drawing.Point(68, 219);
+            this.job3S.AllowDrop = true;
+            this.job3S.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job3S.Location = new System.Drawing.Point(81, 225);
             this.job3S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job3S.Name = "job3S";
             this.job3S.Size = new System.Drawing.Size(68, 23);
@@ -376,7 +387,9 @@
             // 
             // job3T
             // 
-            this.job3T.Location = new System.Drawing.Point(142, 219);
+            this.job3T.AllowDrop = true;
+            this.job3T.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job3T.Location = new System.Drawing.Point(155, 225);
             this.job3T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job3T.Name = "job3T";
             this.job3T.Size = new System.Drawing.Size(68, 23);
@@ -385,7 +398,9 @@
             // 
             // job4S
             // 
-            this.job4S.Location = new System.Drawing.Point(68, 250);
+            this.job4S.AllowDrop = true;
+            this.job4S.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job4S.Location = new System.Drawing.Point(81, 256);
             this.job4S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job4S.Name = "job4S";
             this.job4S.Size = new System.Drawing.Size(68, 23);
@@ -394,7 +409,9 @@
             // 
             // job4T
             // 
-            this.job4T.Location = new System.Drawing.Point(142, 250);
+            this.job4T.AllowDrop = true;
+            this.job4T.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job4T.Location = new System.Drawing.Point(155, 256);
             this.job4T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job4T.Name = "job4T";
             this.job4T.Size = new System.Drawing.Size(68, 23);
@@ -403,7 +420,9 @@
             // 
             // job5S
             // 
-            this.job5S.Location = new System.Drawing.Point(68, 281);
+            this.job5S.AllowDrop = true;
+            this.job5S.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job5S.Location = new System.Drawing.Point(81, 287);
             this.job5S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job5S.Name = "job5S";
             this.job5S.Size = new System.Drawing.Size(68, 23);
@@ -412,7 +431,9 @@
             // 
             // job5T
             // 
-            this.job5T.Location = new System.Drawing.Point(142, 281);
+            this.job5T.AllowDrop = true;
+            this.job5T.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job5T.Location = new System.Drawing.Point(155, 287);
             this.job5T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job5T.Name = "job5T";
             this.job5T.Size = new System.Drawing.Size(68, 23);
@@ -421,9 +442,11 @@
             // 
             // labelSizeL
             // 
+            this.labelSizeL.AllowDrop = true;
+            this.labelSizeL.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelSizeL.AutoSize = true;
             this.labelSizeL.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSizeL.Location = new System.Drawing.Point(75, 137);
+            this.labelSizeL.Location = new System.Drawing.Point(88, 143);
             this.labelSizeL.Name = "labelSizeL";
             this.labelSizeL.Size = new System.Drawing.Size(59, 16);
             this.labelSizeL.TabIndex = 28;
@@ -431,9 +454,11 @@
             // 
             // labelTimeL
             // 
+            this.labelTimeL.AllowDrop = true;
+            this.labelTimeL.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTimeL.AutoSize = true;
             this.labelTimeL.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTimeL.Location = new System.Drawing.Point(145, 137);
+            this.labelTimeL.Location = new System.Drawing.Point(158, 143);
             this.labelTimeL.Name = "labelTimeL";
             this.labelTimeL.Size = new System.Drawing.Size(61, 16);
             this.labelTimeL.TabIndex = 39;
@@ -441,7 +466,9 @@
             // 
             // job6S
             // 
-            this.job6S.Location = new System.Drawing.Point(68, 312);
+            this.job6S.AllowDrop = true;
+            this.job6S.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job6S.Location = new System.Drawing.Point(81, 319);
             this.job6S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job6S.Name = "job6S";
             this.job6S.Size = new System.Drawing.Size(68, 23);
@@ -450,7 +477,9 @@
             // 
             // job6T
             // 
-            this.job6T.Location = new System.Drawing.Point(142, 312);
+            this.job6T.AllowDrop = true;
+            this.job6T.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job6T.Location = new System.Drawing.Point(155, 319);
             this.job6T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job6T.Name = "job6T";
             this.job6T.Size = new System.Drawing.Size(68, 23);
@@ -459,7 +488,9 @@
             // 
             // job7S
             // 
-            this.job7S.Location = new System.Drawing.Point(68, 343);
+            this.job7S.AllowDrop = true;
+            this.job7S.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job7S.Location = new System.Drawing.Point(81, 349);
             this.job7S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job7S.Name = "job7S";
             this.job7S.Size = new System.Drawing.Size(68, 23);
@@ -468,7 +499,9 @@
             // 
             // job7T
             // 
-            this.job7T.Location = new System.Drawing.Point(142, 343);
+            this.job7T.AllowDrop = true;
+            this.job7T.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job7T.Location = new System.Drawing.Point(155, 349);
             this.job7T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job7T.Name = "job7T";
             this.job7T.Size = new System.Drawing.Size(68, 23);
@@ -477,7 +510,9 @@
             // 
             // job8S
             // 
-            this.job8S.Location = new System.Drawing.Point(68, 374);
+            this.job8S.AllowDrop = true;
+            this.job8S.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job8S.Location = new System.Drawing.Point(81, 380);
             this.job8S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job8S.Name = "job8S";
             this.job8S.Size = new System.Drawing.Size(68, 23);
@@ -486,7 +521,9 @@
             // 
             // job8T
             // 
-            this.job8T.Location = new System.Drawing.Point(142, 374);
+            this.job8T.AllowDrop = true;
+            this.job8T.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job8T.Location = new System.Drawing.Point(155, 380);
             this.job8T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job8T.Name = "job8T";
             this.job8T.Size = new System.Drawing.Size(68, 23);
@@ -495,7 +532,9 @@
             // 
             // job9S
             // 
-            this.job9S.Location = new System.Drawing.Point(68, 405);
+            this.job9S.AllowDrop = true;
+            this.job9S.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job9S.Location = new System.Drawing.Point(81, 411);
             this.job9S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job9S.Name = "job9S";
             this.job9S.Size = new System.Drawing.Size(68, 23);
@@ -504,7 +543,9 @@
             // 
             // job9T
             // 
-            this.job9T.Location = new System.Drawing.Point(142, 405);
+            this.job9T.AllowDrop = true;
+            this.job9T.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job9T.Location = new System.Drawing.Point(155, 411);
             this.job9T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job9T.Name = "job9T";
             this.job9T.Size = new System.Drawing.Size(68, 23);
@@ -513,7 +554,9 @@
             // 
             // job10S
             // 
-            this.job10S.Location = new System.Drawing.Point(68, 436);
+            this.job10S.AllowDrop = true;
+            this.job10S.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job10S.Location = new System.Drawing.Point(81, 441);
             this.job10S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job10S.Name = "job10S";
             this.job10S.Size = new System.Drawing.Size(68, 23);
@@ -522,277 +565,22 @@
             // 
             // job10T
             // 
-            this.job10T.Location = new System.Drawing.Point(142, 436);
+            this.job10T.AllowDrop = true;
+            this.job10T.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.job10T.Location = new System.Drawing.Point(155, 441);
             this.job10T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.job10T.Name = "job10T";
             this.job10T.Size = new System.Drawing.Size(68, 23);
             this.job10T.TabIndex = 29;
             this.job10T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // job11S
-            // 
-            this.job11S.Location = new System.Drawing.Point(68, 467);
-            this.job11S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job11S.Name = "job11S";
-            this.job11S.Size = new System.Drawing.Size(68, 23);
-            this.job11S.TabIndex = 70;
-            // 
-            // job11T
-            // 
-            this.job11T.Location = new System.Drawing.Point(142, 467);
-            this.job11T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job11T.Name = "job11T";
-            this.job11T.Size = new System.Drawing.Size(68, 23);
-            this.job11T.TabIndex = 69;
-            // 
-            // job12S
-            // 
-            this.job12S.Location = new System.Drawing.Point(68, 498);
-            this.job12S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job12S.Name = "job12S";
-            this.job12S.Size = new System.Drawing.Size(68, 23);
-            this.job12S.TabIndex = 68;
-            // 
-            // job12T
-            // 
-            this.job12T.Location = new System.Drawing.Point(142, 498);
-            this.job12T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job12T.Name = "job12T";
-            this.job12T.Size = new System.Drawing.Size(68, 23);
-            this.job12T.TabIndex = 67;
-            // 
-            // job13S
-            // 
-            this.job13S.Location = new System.Drawing.Point(68, 529);
-            this.job13S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job13S.Name = "job13S";
-            this.job13S.Size = new System.Drawing.Size(68, 23);
-            this.job13S.TabIndex = 66;
-            // 
-            // job13T
-            // 
-            this.job13T.Location = new System.Drawing.Point(142, 529);
-            this.job13T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job13T.Name = "job13T";
-            this.job13T.Size = new System.Drawing.Size(68, 23);
-            this.job13T.TabIndex = 65;
-            // 
-            // job14S
-            // 
-            this.job14S.Location = new System.Drawing.Point(68, 560);
-            this.job14S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job14S.Name = "job14S";
-            this.job14S.Size = new System.Drawing.Size(68, 23);
-            this.job14S.TabIndex = 64;
-            // 
-            // job14T
-            // 
-            this.job14T.Location = new System.Drawing.Point(142, 560);
-            this.job14T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job14T.Name = "job14T";
-            this.job14T.Size = new System.Drawing.Size(68, 23);
-            this.job14T.TabIndex = 63;
-            // 
-            // job15S
-            // 
-            this.job15S.Location = new System.Drawing.Point(68, 591);
-            this.job15S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job15S.Name = "job15S";
-            this.job15S.Size = new System.Drawing.Size(68, 23);
-            this.job15S.TabIndex = 62;
-            // 
-            // job15T
-            // 
-            this.job15T.Location = new System.Drawing.Point(142, 591);
-            this.job15T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job15T.Name = "job15T";
-            this.job15T.Size = new System.Drawing.Size(68, 23);
-            this.job15T.TabIndex = 61;
-            // 
-            // job16S
-            // 
-            this.job16S.Location = new System.Drawing.Point(68, 622);
-            this.job16S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job16S.Name = "job16S";
-            this.job16S.Size = new System.Drawing.Size(68, 23);
-            this.job16S.TabIndex = 59;
-            // 
-            // job16T
-            // 
-            this.job16T.Location = new System.Drawing.Point(142, 622);
-            this.job16T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job16T.Name = "job16T";
-            this.job16T.Size = new System.Drawing.Size(68, 23);
-            this.job16T.TabIndex = 58;
-            // 
-            // job17S
-            // 
-            this.job17S.Location = new System.Drawing.Point(68, 653);
-            this.job17S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job17S.Name = "job17S";
-            this.job17S.Size = new System.Drawing.Size(68, 23);
-            this.job17S.TabIndex = 57;
-            // 
-            // job17T
-            // 
-            this.job17T.Location = new System.Drawing.Point(142, 653);
-            this.job17T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job17T.Name = "job17T";
-            this.job17T.Size = new System.Drawing.Size(68, 23);
-            this.job17T.TabIndex = 56;
-            // 
-            // job18S
-            // 
-            this.job18S.Location = new System.Drawing.Point(68, 684);
-            this.job18S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job18S.Name = "job18S";
-            this.job18S.Size = new System.Drawing.Size(68, 23);
-            this.job18S.TabIndex = 55;
-            // 
-            // job18T
-            // 
-            this.job18T.Location = new System.Drawing.Point(142, 684);
-            this.job18T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job18T.Name = "job18T";
-            this.job18T.Size = new System.Drawing.Size(68, 23);
-            this.job18T.TabIndex = 54;
-            // 
-            // job19S
-            // 
-            this.job19S.Location = new System.Drawing.Point(68, 715);
-            this.job19S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job19S.Name = "job19S";
-            this.job19S.Size = new System.Drawing.Size(68, 23);
-            this.job19S.TabIndex = 53;
-            // 
-            // job19T
-            // 
-            this.job19T.Location = new System.Drawing.Point(142, 715);
-            this.job19T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job19T.Name = "job19T";
-            this.job19T.Size = new System.Drawing.Size(68, 23);
-            this.job19T.TabIndex = 52;
-            // 
-            // job20S
-            // 
-            this.job20S.Location = new System.Drawing.Point(68, 746);
-            this.job20S.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job20S.Name = "job20S";
-            this.job20S.Size = new System.Drawing.Size(68, 23);
-            this.job20S.TabIndex = 51;
-            // 
-            // job20T
-            // 
-            this.job20T.Location = new System.Drawing.Point(142, 746);
-            this.job20T.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.job20T.Name = "job20T";
-            this.job20T.Size = new System.Drawing.Size(68, 23);
-            this.job20T.TabIndex = 50;
-            // 
-            // labelJ20
-            // 
-            this.labelJ20.AutoSize = true;
-            this.labelJ20.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ20.Location = new System.Drawing.Point(16, 749);
-            this.labelJ20.Name = "labelJ20";
-            this.labelJ20.Size = new System.Drawing.Size(46, 16);
-            this.labelJ20.TabIndex = 49;
-            this.labelJ20.Text = "Job 20";
-            // 
-            // labelJ19
-            // 
-            this.labelJ19.AutoSize = true;
-            this.labelJ19.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ19.Location = new System.Drawing.Point(19, 718);
-            this.labelJ19.Name = "labelJ19";
-            this.labelJ19.Size = new System.Drawing.Size(43, 16);
-            this.labelJ19.TabIndex = 48;
-            this.labelJ19.Text = "Job 19";
-            // 
-            // labelJ18
-            // 
-            this.labelJ18.AutoSize = true;
-            this.labelJ18.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ18.Location = new System.Drawing.Point(19, 687);
-            this.labelJ18.Name = "labelJ18";
-            this.labelJ18.Size = new System.Drawing.Size(43, 16);
-            this.labelJ18.TabIndex = 47;
-            this.labelJ18.Text = "Job 18";
-            // 
-            // labelJ17
-            // 
-            this.labelJ17.AutoSize = true;
-            this.labelJ17.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ17.Location = new System.Drawing.Point(19, 656);
-            this.labelJ17.Name = "labelJ17";
-            this.labelJ17.Size = new System.Drawing.Size(43, 16);
-            this.labelJ17.TabIndex = 46;
-            this.labelJ17.Text = "Job 17";
-            // 
-            // labelJ16
-            // 
-            this.labelJ16.AutoSize = true;
-            this.labelJ16.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ16.Location = new System.Drawing.Point(19, 625);
-            this.labelJ16.Name = "labelJ16";
-            this.labelJ16.Size = new System.Drawing.Size(43, 16);
-            this.labelJ16.TabIndex = 45;
-            this.labelJ16.Text = "Job 16";
-            // 
-            // labelJ15
-            // 
-            this.labelJ15.AutoSize = true;
-            this.labelJ15.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ15.Location = new System.Drawing.Point(19, 594);
-            this.labelJ15.Name = "labelJ15";
-            this.labelJ15.Size = new System.Drawing.Size(43, 16);
-            this.labelJ15.TabIndex = 44;
-            this.labelJ15.Text = "Job 15";
-            // 
-            // labelJ14
-            // 
-            this.labelJ14.AutoSize = true;
-            this.labelJ14.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ14.Location = new System.Drawing.Point(19, 563);
-            this.labelJ14.Name = "labelJ14";
-            this.labelJ14.Size = new System.Drawing.Size(43, 16);
-            this.labelJ14.TabIndex = 43;
-            this.labelJ14.Text = "Job 14";
-            // 
-            // labelJ13
-            // 
-            this.labelJ13.AutoSize = true;
-            this.labelJ13.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ13.Location = new System.Drawing.Point(19, 532);
-            this.labelJ13.Name = "labelJ13";
-            this.labelJ13.Size = new System.Drawing.Size(43, 16);
-            this.labelJ13.TabIndex = 42;
-            this.labelJ13.Text = "Job 13";
-            // 
-            // labelJ12
-            // 
-            this.labelJ12.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ12.Location = new System.Drawing.Point(19, 501);
-            this.labelJ12.Name = "labelJ12";
-            this.labelJ12.Size = new System.Drawing.Size(45, 16);
-            this.labelJ12.TabIndex = 40;
-            this.labelJ12.Text = "Job 12";
-            // 
-            // labelJ11
-            // 
-            this.labelJ11.AutoSize = true;
-            this.labelJ11.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJ11.Location = new System.Drawing.Point(22, 470);
-            this.labelJ11.Name = "labelJ11";
-            this.labelJ11.Size = new System.Drawing.Size(40, 16);
-            this.labelJ11.TabIndex = 41;
-            this.labelJ11.Text = "Job 11";
-            // 
             // labelMS
             // 
+            this.labelMS.AllowDrop = true;
+            this.labelMS.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelMS.AutoSize = true;
             this.labelMS.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMS.Location = new System.Drawing.Point(22, 45);
+            this.labelMS.Location = new System.Drawing.Point(35, 51);
             this.labelMS.Name = "labelMS";
             this.labelMS.Size = new System.Drawing.Size(114, 16);
             this.labelMS.TabIndex = 72;
@@ -800,9 +588,11 @@
             // 
             // labelCoa
             // 
+            this.labelCoa.AllowDrop = true;
+            this.labelCoa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCoa.AutoSize = true;
             this.labelCoa.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCoa.Location = new System.Drawing.Point(247, 20);
+            this.labelCoa.Location = new System.Drawing.Point(260, 25);
             this.labelCoa.Name = "labelCoa";
             this.labelCoa.Size = new System.Drawing.Size(139, 16);
             this.labelCoa.TabIndex = 74;
@@ -810,8 +600,10 @@
             // 
             // textboxCoa
             // 
+            this.textboxCoa.AllowDrop = true;
+            this.textboxCoa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textboxCoa.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textboxCoa.Location = new System.Drawing.Point(392, 17);
+            this.textboxCoa.Location = new System.Drawing.Point(405, 23);
             this.textboxCoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textboxCoa.Name = "textboxCoa";
             this.textboxCoa.Size = new System.Drawing.Size(69, 23);
@@ -821,19 +613,26 @@
             // 
             // programOutput
             // 
-            this.programOutput.Location = new System.Drawing.Point(539, 149);
+            this.programOutput.AllowDrop = true;
+            this.programOutput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.programOutput.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.programOutput.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.programOutput.Location = new System.Drawing.Point(375, 150);
             this.programOutput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.programOutput.Multiline = true;
             this.programOutput.Name = "programOutput";
+            this.programOutput.ReadOnly = true;
             this.programOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.programOutput.Size = new System.Drawing.Size(364, 465);
+            this.programOutput.Size = new System.Drawing.Size(273, 311);
             this.programOutput.TabIndex = 76;
             // 
             // labelCTL
             // 
+            this.labelCTL.AllowDrop = true;
+            this.labelCTL.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCTL.AutoSize = true;
             this.labelCTL.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCTL.Location = new System.Drawing.Point(217, 137);
+            this.labelCTL.Location = new System.Drawing.Point(230, 143);
             this.labelCTL.Name = "labelCTL";
             this.labelCTL.Size = new System.Drawing.Size(129, 16);
             this.labelCTL.TabIndex = 77;
@@ -841,8 +640,10 @@
             // 
             // job1Comp
             // 
+            this.job1Comp.AllowDrop = true;
+            this.job1Comp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.job1Comp.AutoSize = true;
-            this.job1Comp.Location = new System.Drawing.Point(273, 160);
+            this.job1Comp.Location = new System.Drawing.Point(236, 167);
             this.job1Comp.Name = "job1Comp";
             this.job1Comp.Size = new System.Drawing.Size(0, 16);
             this.job1Comp.TabIndex = 79;
@@ -850,8 +651,10 @@
             // 
             // job2Comp
             // 
+            this.job2Comp.AllowDrop = true;
+            this.job2Comp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.job2Comp.AutoSize = true;
-            this.job2Comp.Location = new System.Drawing.Point(273, 191);
+            this.job2Comp.Location = new System.Drawing.Point(236, 197);
             this.job2Comp.Name = "job2Comp";
             this.job2Comp.Size = new System.Drawing.Size(0, 16);
             this.job2Comp.TabIndex = 80;
@@ -859,8 +662,10 @@
             // 
             // job3Comp
             // 
+            this.job3Comp.AllowDrop = true;
+            this.job3Comp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.job3Comp.AutoSize = true;
-            this.job3Comp.Location = new System.Drawing.Point(273, 222);
+            this.job3Comp.Location = new System.Drawing.Point(236, 228);
             this.job3Comp.Name = "job3Comp";
             this.job3Comp.Size = new System.Drawing.Size(0, 16);
             this.job3Comp.TabIndex = 81;
@@ -868,8 +673,10 @@
             // 
             // job4Comp
             // 
+            this.job4Comp.AllowDrop = true;
+            this.job4Comp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.job4Comp.AutoSize = true;
-            this.job4Comp.Location = new System.Drawing.Point(273, 253);
+            this.job4Comp.Location = new System.Drawing.Point(236, 259);
             this.job4Comp.Name = "job4Comp";
             this.job4Comp.Size = new System.Drawing.Size(0, 16);
             this.job4Comp.TabIndex = 82;
@@ -877,8 +684,10 @@
             // 
             // job5Comp
             // 
+            this.job5Comp.AllowDrop = true;
+            this.job5Comp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.job5Comp.AutoSize = true;
-            this.job5Comp.Location = new System.Drawing.Point(273, 284);
+            this.job5Comp.Location = new System.Drawing.Point(236, 289);
             this.job5Comp.Name = "job5Comp";
             this.job5Comp.Size = new System.Drawing.Size(0, 16);
             this.job5Comp.TabIndex = 83;
@@ -886,8 +695,10 @@
             // 
             // job6Comp
             // 
+            this.job6Comp.AllowDrop = true;
+            this.job6Comp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.job6Comp.AutoSize = true;
-            this.job6Comp.Location = new System.Drawing.Point(273, 315);
+            this.job6Comp.Location = new System.Drawing.Point(236, 321);
             this.job6Comp.Name = "job6Comp";
             this.job6Comp.Size = new System.Drawing.Size(0, 16);
             this.job6Comp.TabIndex = 84;
@@ -895,8 +706,10 @@
             // 
             // job7Comp
             // 
+            this.job7Comp.AllowDrop = true;
+            this.job7Comp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.job7Comp.AutoSize = true;
-            this.job7Comp.Location = new System.Drawing.Point(273, 346);
+            this.job7Comp.Location = new System.Drawing.Point(236, 352);
             this.job7Comp.Name = "job7Comp";
             this.job7Comp.Size = new System.Drawing.Size(0, 16);
             this.job7Comp.TabIndex = 85;
@@ -904,8 +717,10 @@
             // 
             // job8Comp
             // 
+            this.job8Comp.AllowDrop = true;
+            this.job8Comp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.job8Comp.AutoSize = true;
-            this.job8Comp.Location = new System.Drawing.Point(273, 377);
+            this.job8Comp.Location = new System.Drawing.Point(236, 383);
             this.job8Comp.Name = "job8Comp";
             this.job8Comp.Size = new System.Drawing.Size(0, 16);
             this.job8Comp.TabIndex = 86;
@@ -913,8 +728,10 @@
             // 
             // job9Comp
             // 
+            this.job9Comp.AllowDrop = true;
+            this.job9Comp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.job9Comp.AutoSize = true;
-            this.job9Comp.Location = new System.Drawing.Point(273, 408);
+            this.job9Comp.Location = new System.Drawing.Point(236, 415);
             this.job9Comp.Name = "job9Comp";
             this.job9Comp.Size = new System.Drawing.Size(0, 16);
             this.job9Comp.TabIndex = 87;
@@ -922,126 +739,34 @@
             // 
             // job10Comp
             // 
+            this.job10Comp.AllowDrop = true;
+            this.job10Comp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.job10Comp.AutoSize = true;
-            this.job10Comp.Location = new System.Drawing.Point(272, 439);
+            this.job10Comp.Location = new System.Drawing.Point(235, 445);
             this.job10Comp.Name = "job10Comp";
             this.job10Comp.Size = new System.Drawing.Size(0, 16);
             this.job10Comp.TabIndex = 88;
             this.job10Comp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // job11Comp
-            // 
-            this.job11Comp.AutoSize = true;
-            this.job11Comp.Location = new System.Drawing.Point(272, 474);
-            this.job11Comp.Name = "job11Comp";
-            this.job11Comp.Size = new System.Drawing.Size(0, 16);
-            this.job11Comp.TabIndex = 89;
-            this.job11Comp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // job12Comp
-            // 
-            this.job12Comp.AutoSize = true;
-            this.job12Comp.Location = new System.Drawing.Point(272, 505);
-            this.job12Comp.Name = "job12Comp";
-            this.job12Comp.Size = new System.Drawing.Size(0, 16);
-            this.job12Comp.TabIndex = 90;
-            this.job12Comp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // job13Comp
-            // 
-            this.job13Comp.AutoSize = true;
-            this.job13Comp.Location = new System.Drawing.Point(272, 536);
-            this.job13Comp.Name = "job13Comp";
-            this.job13Comp.Size = new System.Drawing.Size(0, 16);
-            this.job13Comp.TabIndex = 91;
-            this.job13Comp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // job14Comp
-            // 
-            this.job14Comp.AutoSize = true;
-            this.job14Comp.Location = new System.Drawing.Point(272, 567);
-            this.job14Comp.Name = "job14Comp";
-            this.job14Comp.Size = new System.Drawing.Size(0, 16);
-            this.job14Comp.TabIndex = 92;
-            this.job14Comp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // job15Comp
-            // 
-            this.job15Comp.AutoSize = true;
-            this.job15Comp.Location = new System.Drawing.Point(272, 598);
-            this.job15Comp.Name = "job15Comp";
-            this.job15Comp.Size = new System.Drawing.Size(0, 16);
-            this.job15Comp.TabIndex = 93;
-            this.job15Comp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // job16Comp
-            // 
-            this.job16Comp.AutoSize = true;
-            this.job16Comp.Location = new System.Drawing.Point(272, 626);
-            this.job16Comp.Name = "job16Comp";
-            this.job16Comp.Size = new System.Drawing.Size(0, 16);
-            this.job16Comp.TabIndex = 94;
-            this.job16Comp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // job17Comp
-            // 
-            this.job17Comp.AutoSize = true;
-            this.job17Comp.Location = new System.Drawing.Point(272, 660);
-            this.job17Comp.Name = "job17Comp";
-            this.job17Comp.Size = new System.Drawing.Size(0, 16);
-            this.job17Comp.TabIndex = 95;
-            this.job17Comp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // job18Comp
-            // 
-            this.job18Comp.AutoSize = true;
-            this.job18Comp.Location = new System.Drawing.Point(272, 691);
-            this.job18Comp.Name = "job18Comp";
-            this.job18Comp.Size = new System.Drawing.Size(0, 16);
-            this.job18Comp.TabIndex = 96;
-            this.job18Comp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // job19Comp
-            // 
-            this.job19Comp.AutoSize = true;
-            this.job19Comp.Location = new System.Drawing.Point(272, 722);
-            this.job19Comp.Name = "job19Comp";
-            this.job19Comp.Size = new System.Drawing.Size(0, 16);
-            this.job19Comp.TabIndex = 97;
-            this.job19Comp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // job20Comp
-            // 
-            this.job20Comp.AutoSize = true;
-            this.job20Comp.Location = new System.Drawing.Point(272, 753);
-            this.job20Comp.Name = "job20Comp";
-            this.job20Comp.Size = new System.Drawing.Size(0, 16);
-            this.job20Comp.TabIndex = 98;
-            this.job20Comp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // comboxMB
             // 
+            this.comboxMB.AllowDrop = true;
+            this.comboxMB.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboxMB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboxMB.FormattingEnabled = true;
-            this.comboxMB.Location = new System.Drawing.Point(138, 42);
+            this.comboxMB.Location = new System.Drawing.Point(151, 48);
             this.comboxMB.Name = "comboxMB";
             this.comboxMB.Size = new System.Drawing.Size(69, 24);
             this.comboxMB.TabIndex = 99;
             this.comboxMB.SelectedIndexChanged += new System.EventHandler(this.comboxMB_SelectedIndexChanged);
             // 
-            // memoryBox
-            // 
-            this.memoryBox.Location = new System.Drawing.Point(924, 149);
-            this.memoryBox.Multiline = true;
-            this.memoryBox.Name = "memoryBox";
-            this.memoryBox.Size = new System.Drawing.Size(174, 492);
-            this.memoryBox.TabIndex = 100;
-            // 
             // memLbl
             // 
+            this.memLbl.AllowDrop = true;
+            this.memLbl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.memLbl.AutoSize = true;
             this.memLbl.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memLbl.Location = new System.Drawing.Point(920, 127);
+            this.memLbl.Location = new System.Drawing.Point(367, 93);
             this.memLbl.Name = "memLbl";
             this.memLbl.Size = new System.Drawing.Size(71, 19);
             this.memLbl.TabIndex = 101;
@@ -1051,20 +776,13 @@
             // 
             this.ffStrat.Tick += new System.EventHandler(this.ffStrat_Tick_1);
             // 
-            // lblPosition
-            // 
-            this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(567, 45);
-            this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(135, 16);
-            this.lblPosition.TabIndex = 102;
-            this.lblPosition.Text = "debugger (ignore this)";
-            // 
             // btnCont
             // 
-            this.btnCont.Location = new System.Drawing.Point(738, 679);
+            this.btnCont.AllowDrop = true;
+            this.btnCont.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCont.Location = new System.Drawing.Point(376, 500);
             this.btnCont.Name = "btnCont";
-            this.btnCont.Size = new System.Drawing.Size(87, 28);
+            this.btnCont.Size = new System.Drawing.Size(66, 28);
             this.btnCont.TabIndex = 103;
             this.btnCont.Text = "Continue";
             this.btnCont.UseVisualStyleBackColor = true;
@@ -1074,27 +792,74 @@
             // 
             this.bfStrat.Tick += new System.EventHandler(this.bfStrat_Tick);
             // 
+            // comboxComp
+            // 
+            this.comboxComp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboxComp.FormattingEnabled = true;
+            this.comboxComp.Location = new System.Drawing.Point(404, 51);
+            this.comboxComp.Name = "comboxComp";
+            this.comboxComp.Size = new System.Drawing.Size(70, 24);
+            this.comboxComp.TabIndex = 104;
+            this.comboxComp.SelectedIndexChanged += new System.EventHandler(this.comboxComp_SelectedIndexChanged);
+            // 
+            // comboxCoal
+            // 
+            this.comboxCoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboxCoal.FormattingEnabled = true;
+            this.comboxCoal.Location = new System.Drawing.Point(404, 22);
+            this.comboxCoal.Name = "comboxCoal";
+            this.comboxCoal.Size = new System.Drawing.Size(70, 24);
+            this.comboxCoal.TabIndex = 105;
+            this.comboxCoal.SelectedIndexChanged += new System.EventHandler(this.comboxCoal_SelectedIndexChanged);
+            // 
+            // coalChoice
+            // 
+            this.coalChoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.coalChoice.FormattingEnabled = true;
+            this.coalChoice.Location = new System.Drawing.Point(404, 22);
+            this.coalChoice.Name = "coalChoice";
+            this.coalChoice.Size = new System.Drawing.Size(70, 24);
+            this.coalChoice.TabIndex = 106;
+            this.coalChoice.SelectedIndexChanged += new System.EventHandler(this.coalChoice_SelectedIndexChanged);
+            // 
+            // compChoice
+            // 
+            this.compChoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.compChoice.FormattingEnabled = true;
+            this.compChoice.Location = new System.Drawing.Point(404, 51);
+            this.compChoice.Name = "compChoice";
+            this.compChoice.Size = new System.Drawing.Size(70, 24);
+            this.compChoice.TabIndex = 107;
+            this.compChoice.SelectedIndexChanged += new System.EventHandler(this.compChoice_SelectedIndexChanged);
+            // 
+            // memVis
+            // 
+            this.memVis.BackColor = System.Drawing.SystemColors.Control;
+            this.memVis.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.memVis.Location = new System.Drawing.Point(445, 91);
+            this.memVis.Multiline = true;
+            this.memVis.Name = "memVis";
+            this.memVis.ReadOnly = true;
+            this.memVis.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.memVis.Size = new System.Drawing.Size(260, 42);
+            this.memVis.TabIndex = 108;
+            // 
             // MemUI
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1122, 783);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(717, 553);
+            this.Controls.Add(this.memVis);
+            this.Controls.Add(this.compChoice);
+            this.Controls.Add(this.coalChoice);
+            this.Controls.Add(this.comboxCoal);
+            this.Controls.Add(this.comboxComp);
             this.Controls.Add(this.btnCont);
-            this.Controls.Add(this.lblPosition);
             this.Controls.Add(this.memLbl);
-            this.Controls.Add(this.memoryBox);
             this.Controls.Add(this.comboxMB);
-            this.Controls.Add(this.job20Comp);
-            this.Controls.Add(this.job19Comp);
-            this.Controls.Add(this.job18Comp);
-            this.Controls.Add(this.job17Comp);
-            this.Controls.Add(this.job16Comp);
-            this.Controls.Add(this.job15Comp);
-            this.Controls.Add(this.job14Comp);
-            this.Controls.Add(this.job13Comp);
-            this.Controls.Add(this.job12Comp);
-            this.Controls.Add(this.job11Comp);
             this.Controls.Add(this.job10Comp);
             this.Controls.Add(this.job9Comp);
             this.Controls.Add(this.job8Comp);
@@ -1110,36 +875,6 @@
             this.Controls.Add(this.textboxCoa);
             this.Controls.Add(this.labelCoa);
             this.Controls.Add(this.labelMS);
-            this.Controls.Add(this.job11S);
-            this.Controls.Add(this.job11T);
-            this.Controls.Add(this.job12S);
-            this.Controls.Add(this.job12T);
-            this.Controls.Add(this.job13S);
-            this.Controls.Add(this.job13T);
-            this.Controls.Add(this.job14S);
-            this.Controls.Add(this.job14T);
-            this.Controls.Add(this.job15S);
-            this.Controls.Add(this.job15T);
-            this.Controls.Add(this.job16S);
-            this.Controls.Add(this.job16T);
-            this.Controls.Add(this.job17S);
-            this.Controls.Add(this.job17T);
-            this.Controls.Add(this.job18S);
-            this.Controls.Add(this.job18T);
-            this.Controls.Add(this.job19S);
-            this.Controls.Add(this.job19T);
-            this.Controls.Add(this.job20S);
-            this.Controls.Add(this.job20T);
-            this.Controls.Add(this.labelJ20);
-            this.Controls.Add(this.labelJ19);
-            this.Controls.Add(this.labelJ18);
-            this.Controls.Add(this.labelJ17);
-            this.Controls.Add(this.labelJ16);
-            this.Controls.Add(this.labelJ15);
-            this.Controls.Add(this.labelJ14);
-            this.Controls.Add(this.labelJ13);
-            this.Controls.Add(this.labelJ12);
-            this.Controls.Add(this.labelJ11);
             this.Controls.Add(this.labelTimeL);
             this.Controls.Add(this.job6S);
             this.Controls.Add(this.job6T);
@@ -1184,8 +919,8 @@
             this.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
             this.Name = "MemUI";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Memory Management";
             this.ResumeLayout(false);
@@ -1236,36 +971,6 @@
         private System.Windows.Forms.TextBox job9T;
         private System.Windows.Forms.TextBox job10S;
         private System.Windows.Forms.TextBox job10T;
-        private System.Windows.Forms.TextBox job11S;
-        private System.Windows.Forms.TextBox job11T;
-        private System.Windows.Forms.TextBox job12S;
-        private System.Windows.Forms.TextBox job12T;
-        private System.Windows.Forms.TextBox job13S;
-        private System.Windows.Forms.TextBox job13T;
-        private System.Windows.Forms.TextBox job14S;
-        private System.Windows.Forms.TextBox job14T;
-        private System.Windows.Forms.TextBox job15S;
-        private System.Windows.Forms.TextBox job15T;
-        private System.Windows.Forms.TextBox job16S;
-        private System.Windows.Forms.TextBox job16T;
-        private System.Windows.Forms.TextBox job17S;
-        private System.Windows.Forms.TextBox job17T;
-        private System.Windows.Forms.TextBox job18S;
-        private System.Windows.Forms.TextBox job18T;
-        private System.Windows.Forms.TextBox job19S;
-        private System.Windows.Forms.TextBox job19T;
-        private System.Windows.Forms.TextBox job20S;
-        private System.Windows.Forms.TextBox job20T;
-        private System.Windows.Forms.Label labelJ20;
-        private System.Windows.Forms.Label labelJ19;
-        private System.Windows.Forms.Label labelJ18;
-        private System.Windows.Forms.Label labelJ17;
-        private System.Windows.Forms.Label labelJ16;
-        private System.Windows.Forms.Label labelJ15;
-        private System.Windows.Forms.Label labelJ14;
-        private System.Windows.Forms.Label labelJ13;
-        private System.Windows.Forms.Label labelJ12;
-        private System.Windows.Forms.Label labelJ11;
         private System.Windows.Forms.Label labelMS;
         private System.Windows.Forms.Label labelCoa;
         private System.Windows.Forms.TextBox textboxCoa;
@@ -1281,23 +986,16 @@
         private System.Windows.Forms.Label job8Comp;
         private System.Windows.Forms.Label job9Comp;
         private System.Windows.Forms.Label job10Comp;
-        private System.Windows.Forms.Label job11Comp;
-        private System.Windows.Forms.Label job12Comp;
-        private System.Windows.Forms.Label job13Comp;
-        private System.Windows.Forms.Label job14Comp;
-        private System.Windows.Forms.Label job15Comp;
-        private System.Windows.Forms.Label job16Comp;
-        private System.Windows.Forms.Label job17Comp;
-        private System.Windows.Forms.Label job18Comp;
-        private System.Windows.Forms.Label job19Comp;
-        private System.Windows.Forms.Label job20Comp;
         private System.Windows.Forms.ComboBox comboxMB;
-        private System.Windows.Forms.TextBox memoryBox;
         private System.Windows.Forms.Label memLbl;
         private System.Windows.Forms.Timer ffStrat;
-        private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.Button btnCont;
         private System.Windows.Forms.Timer bfStrat;
+        private System.Windows.Forms.ComboBox comboxComp;
+        private System.Windows.Forms.ComboBox comboxCoal;
+        private System.Windows.Forms.ComboBox coalChoice;
+        private System.Windows.Forms.ComboBox compChoice;
+        private System.Windows.Forms.TextBox memVis;
     }
 }
 
