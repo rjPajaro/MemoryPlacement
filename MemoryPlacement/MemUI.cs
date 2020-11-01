@@ -10,7 +10,7 @@ namespace MemUI
      * OS Lec - OL157 (project)
      *  MEMORY MANAGEMENT PROJECT (FIRST AND BEST FIT) BY:
         - Tech Lead: Randall Joseph Pajaro
-        - Bug Catcher: Mac Kristan Isaac
+        - Bug Catcher/Best Fit Analyst: Mac Kristan Isaac
         - Designer: Spencer Ivan Santiago
     */
     public partial class MemUI : Form
@@ -26,13 +26,13 @@ namespace MemUI
         private List<int> memoryAlloc = new List<int>(); // memory visuals (sizes)
         private List<int> uPos = new List<int>(); // jobs in memory
         private List<int> compression = new List<int>(); 
-        private List<int> pogi = new List<int>(); // ORIGINALITY ! ( ﾟεﾟ )
+        private List<int> pogi = new List<int>(); // "originality"
         private List<int> ListOfIndexH = new List<int>();
         private List<char> holes = new List<char>(); // holes
         private double memory = 0; // these are self explanatory (most..)
-        private int numOfJobs = 0, compInt = 0, _complete = 0, coalesce = 0, ramLeft = 0, timeUnit = 0, h = 0;
+        private int numOfJobs = 0, compInt = 0, _complete = 0, coalesce = 0, ramLeft = 0, timeUnit = 0, h = 0, start = 0;
         private int allocated = 0, timer = 1, smallest = 0, _coal = 1, compressor = 1, cCheck = 0, compCount = 0;
-        private string strategy;
+        private string strategy; // first or best fit
         private string newLine = Environment.NewLine; // new line for textbox outputs
         private bool compress = false, selectCoa = true, selectComp = true; // validation
 
@@ -123,6 +123,7 @@ namespace MemUI
             {
                 coalChoice.Visible = false;
                 comboxCoal.Visible = true;
+                comboxCoal.DroppedDown = true;
             }else if(coalChoice.Text.Equals("User Input"))
             {
                 coalChoice.Visible = false;
@@ -136,6 +137,7 @@ namespace MemUI
             {
                 compChoice.Visible = false;
                 comboxComp.Visible = true;
+                comboxComp.DroppedDown = true;
             }
             else if (compChoice.Text.Equals("User Input"))
             {
@@ -146,7 +148,7 @@ namespace MemUI
 
         private void comboxCoal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboxCoal.Text.Equals("back to chocies"))
+            if(comboxCoal.Text.Equals("back"))
             {
                 comboxCoal.Visible = false;
                 coalChoice.Visible = true;
@@ -160,10 +162,10 @@ namespace MemUI
 
         private void comboxComp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboxComp.Text.Equals("back to chocies"))
+            if (comboxComp.Text.Equals("back"))
             {
                 comboxComp.Visible = false;
-                coalChoice.Visible = true;
+                compChoice.Visible = true;
             }
             else
             {
@@ -199,6 +201,7 @@ namespace MemUI
             btnCont.Enabled = true;
             pauseButton.Enabled = true;
             abortButton.Enabled = true;
+            start = 0;
 
             for (int j = 0; j < compTime.Count(); j++)
             {
@@ -234,19 +237,51 @@ namespace MemUI
                     // To be added
                     if(Int32.Parse(jobs[i].Text) <= memory)
                     {
-                        jSize.Add(Int32.Parse(jobs[i].Text)); // converts the job sizes to int from string and puts them in a list
-                        jTime.Add(Int32.Parse(timeU[i].Text));// converts the job time units to int from string and puts them in a list
+                        if (jSize.Contains(Int32.Parse(jobs[i].Text)))
+                        {
+                            MessageBox.Show("Job size/s are already present. (Leads to processing error :/)", "Allocation Error:");
+                            compTime[i].Text = "<-- Error Detected";
+                            startButton.Enabled = true;
+                            btnCont.Enabled = false;
+                            pauseButton.Enabled = false;
+                            abortButton.Enabled = false;
+                            programOutput.Enabled = false;
+                            programOutput.Text = "";
+                            jSize.Clear();
+                            jTime.Clear();
+                            start++;
+                            break;
+                        }
+                        else
+                        {
+                            jSize.Add(Int32.Parse(jobs[i].Text)); // converts the job sizes to int from string and puts them in a list
+                            jTime.Add(Int32.Parse(timeU[i].Text));// converts the job time units to int from string and puts them in a list
+                        }
                     }
                     else
                     {
                         MessageBox.Show("Job size/s are larger than the given memory size", "Allocation Error:");
+                        compTime[i].Text = "<-- Error Detected";
+                        startButton.Enabled = true;
+                        btnCont.Enabled = false;
+                        pauseButton.Enabled = false;
+                        abortButton.Enabled = false;
+                        programOutput.Enabled = false;
+                        programOutput.Text = "";
+                        jSize.Clear();
+                        jTime.Clear();
+                        start++;
+                        break;
                     }
                 }
 
-                foreach (int i in jSize)
+                if(start == 0)
                 {
-                    int pos = jSize.IndexOf(i);
-                    positions.Add(pos);
+                    foreach (int i in jSize)
+                    {
+                        int pos = jSize.IndexOf(i);
+                        positions.Add(pos);
+                    }
                 }
 
                 if (selectComp == true)
@@ -254,12 +289,12 @@ namespace MemUI
                 if (selectCoa == true)
                     coalesce = Int32.Parse(textboxCoa.Text);
 
-                if (strategy.Equals("First Fit"))
+                if (strategy.Equals("First Fit") && start == 0)
                 {
                     ffStrat.Interval = 1000;
                     ffStrat.Start();
                 }
-                else if (strategy.Equals("Best Fit"))
+                else if (strategy.Equals("Best Fit") && start == 0)
                 {
                     bfStrat.Interval = 1000;
                     bfStrat.Start();
@@ -276,7 +311,6 @@ namespace MemUI
                 abortButton.Enabled = false;
                 jSize.Clear();
                 jTime.Clear();
-                memLbl.Text = "Memory: ";
                 for(int err = 0; err < numOfJobs; err++)
                 {
                     compTime[err].Text = "";
@@ -399,7 +433,6 @@ namespace MemUI
                                 programOutput.Text += timeUnit.ToString() + " TU - Coalesce" + newLine;
                                 allocated = 0;
 
-                                Console.WriteLine("TU: " + timeUnit + " - " + hCount);
                                 if (positions.Count() > 0)
                                     timer = positions[0] + 1; // timer will be initalized to the first value of the position + 1
 
@@ -461,7 +494,6 @@ namespace MemUI
                                 {
                                     if (jSize[timer - 1] <= pogi[i])
                                     {
-                                        Console.WriteLine("This runs at: " + timeUnit);
                                         h = ListOfIndexH[i]; // problem zzzz
                                         break;
                                     }
@@ -498,12 +530,6 @@ namespace MemUI
 
                                         // problem: 
                                         ///////// allocated and completes the process at the same time
-                                        string ffs = "";
-                                        for (int i = 0; i < holes.Count(); i++)
-                                        {
-                                            ffs += holes[i] + " ";
-                                        }
-                                        Console.WriteLine("out: " + ffs);
 
                                         _completed.Add(timeUnit); // adds the completed time units (prevents increment bug for completed times
                                         compTime[uPos[h]].Text = "Completed in " + (_completed[_complete]).ToString() + " TU"; // outputs completion time
@@ -694,7 +720,6 @@ namespace MemUI
                             {
                                 if (jSize[timer - 1] <= pogi[i])
                                 {
-                                    Console.WriteLine("This runs at: " + timeUnit);
                                     h = ListOfIndexH[i]; // problem zzzz
                                     break;
                                 }
@@ -731,12 +756,6 @@ namespace MemUI
 
                                     // problem: 
                                     ///////// allocated and completes the process at the same time
-                                    string ffs = "";
-                                    for (int i = 0; i < holes.Count(); i++)
-                                    {
-                                        ffs += holes[i] + " ";
-                                    }
-                                    Console.WriteLine("out: " + ffs);
 
                                     _completed.Add(timeUnit); // adds the completed time units (prevents increment bug for completed times
                                     compTime[uPos[h]].Text = "Completed in " + (_completed[_complete]).ToString() + " TU"; // outputs completion time
@@ -853,7 +872,7 @@ namespace MemUI
                     mHoles += "   J" + (uPos[i] + 1) + "       |   ";
             }
 
-            memVis.Text = mSizes + newLine + mHoles;
+            memVis.Text = mSizes + newLine + mHoles; // memory visuals
 
             programOutput.SelectionStart = programOutput.Text.Length;
             programOutput.ScrollToCaret();
@@ -966,7 +985,6 @@ namespace MemUI
                                 programOutput.Text += timeUnit.ToString() + " TU - Coalesce" + newLine;
                                 allocated = 0;
 
-                                Console.WriteLine("TU: " + timeUnit + " - " + hCount);
                                 if (positions.Count() > 0)
                                     timer = positions[0] + 1; // timer will be initalized to the first value of the position + 1
 
@@ -1287,7 +1305,6 @@ namespace MemUI
                 programOutput.Text += "-- Finished --";
                 btnCont.Enabled = false;
                 pauseButton.Enabled = false;
-                startButton.Enabled = true;
                 holes.Clear();
                 uPos.Clear();
                 memoryAlloc.Clear();
@@ -1321,7 +1338,7 @@ namespace MemUI
                 compress = true;
         }
 
-        private void comboxFS_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboxFS_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             strategy = comboxFS.Text;
         }

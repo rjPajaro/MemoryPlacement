@@ -146,7 +146,7 @@
             this.comboxFS.Name = "comboxFS";
             this.comboxFS.Size = new System.Drawing.Size(69, 24);
             this.comboxFS.TabIndex = 3;
-            this.comboxFS.SelectedIndexChanged += new System.EventHandler(this.comboxFS_SelectedIndexChanged);
+            this.comboxFS.SelectedIndexChanged += new System.EventHandler(this.comboxFS_SelectedIndexChanged_1);
             // 
             // comboxNJ
             // 
@@ -866,11 +866,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(442, 537);
+            this.label1.Location = new System.Drawing.Point(598, 532);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(263, 13);
+            this.label1.Size = new System.Drawing.Size(107, 13);
             this.label1.TabIndex = 110;
-            this.label1.Text = "Bug: Same job size leads to an error in procecssing";
+            this.label1.Text = "MM Prototype - Mk1";
             // 
             // MemUI
             // 
