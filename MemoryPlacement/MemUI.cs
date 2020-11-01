@@ -7,7 +7,8 @@ using System.Drawing;
 namespace MemUI
 {
     /*
-        MEMORY MANAGEMENT PROJECT (FIRST AND BEST FIT) BY:
+     * OS Lec - OL157 (project)
+     *  MEMORY MANAGEMENT PROJECT (FIRST AND BEST FIT) BY:
         - Tech Lead: Randall Joseph Pajaro
         - Bug Catcher: Mac Kristan Isaac
         - Designer: Spencer Ivan Santiago
@@ -15,25 +16,25 @@ namespace MemUI
     public partial class MemUI : Form
     {
         //variables
-        private List<TextBox> jobs = new List<TextBox>();
-        private List<TextBox> timeU = new List<TextBox>();
-        private List<Label> compTime = new List<Label>();
-        private List<int> jSize = new List<int>();
-        private List<int> jTime = new List<int>();
-        private List<int> positions = new List<int>();
-        private List<int> _completed = new List<int>();
-        private List<int> memoryAlloc = new List<int>();
-        private List<int> uPos = new List<int>();
-        private List<int> compression = new List<int>();
-        private List<int> pogi = new List<int>(); // ORIGINALITY ! :)
+        private List<TextBox> jobs = new List<TextBox>(); // jobs
+        private List<TextBox> timeU = new List<TextBox>(); // time units of jobs
+        private List<Label> compTime = new List<Label>(); //completion time labels
+        private List<int> jSize = new List<int>(); // copy of job sizes
+        private List<int> jTime = new List<int>(); // copy of time units of jobs
+        private List<int> positions = new List<int>(); // positions of each jobs in the list
+        private List<int> _completed = new List<int>(); // completion time lists
+        private List<int> memoryAlloc = new List<int>(); // memory visuals (sizes)
+        private List<int> uPos = new List<int>(); // jobs in memory
+        private List<int> compression = new List<int>(); 
+        private List<int> pogi = new List<int>(); // ORIGINALITY ! ( ﾟεﾟ )
         private List<int> ListOfIndexH = new List<int>();
-        private List<char> holes = new List<char>();
-        private double memory = 0;
+        private List<char> holes = new List<char>(); // holes
+        private double memory = 0; // these are self explanatory (most..)
         private int numOfJobs = 0, compInt = 0, _complete = 0, coalesce = 0, ramLeft = 0, timeUnit = 0, h = 0;
         private int allocated = 0, timer = 1, smallest = 0, _coal = 1, compressor = 1, cCheck = 0, compCount = 0;
         private string strategy;
-        private string newLine = Environment.NewLine;
-        private bool compress = false, selectCoa = true, selectComp = true;
+        private string newLine = Environment.NewLine; // new line for textbox outputs
+        private bool compress = false, selectCoa = true, selectComp = true; // validation
 
         public MemUI()
         {
@@ -136,7 +137,7 @@ namespace MemUI
                 compChoice.Visible = false;
                 comboxComp.Visible = true;
             }
-            else if (coalChoice.Text.Equals("User Input"))
+            else if (compChoice.Text.Equals("User Input"))
             {
                 compChoice.Visible = false;
                 textboxComp.Visible = true;

@@ -95,6 +95,8 @@
             this.coalChoice = new System.Windows.Forms.ComboBox();
             this.compChoice = new System.Windows.Forms.ComboBox();
             this.memVis = new System.Windows.Forms.TextBox();
+            this.coders = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelFS
@@ -844,6 +846,32 @@
             this.memVis.Size = new System.Drawing.Size(260, 42);
             this.memVis.TabIndex = 108;
             // 
+            // coders
+            // 
+            this.coders.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.coders.BackColor = System.Drawing.SystemColors.Control;
+            this.coders.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.coders.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coders.Location = new System.Drawing.Point(7, 492);
+            this.coders.Multiline = true;
+            this.coders.Name = "coders";
+            this.coders.ReadOnly = true;
+            this.coders.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.coders.Size = new System.Drawing.Size(140, 58);
+            this.coders.TabIndex = 109;
+            this.coders.Text = "Programmed by:\r\n - Randall Joseph Pajaro\r\n - Mac Kristan Isaac\r\n - Spencer Ivan S" +
+    "antiago";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(442, 537);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(263, 13);
+            this.label1.TabIndex = 110;
+            this.label1.Text = "Bug: Same job size leads to an error in procecssing";
+            // 
             // MemUI
             // 
             this.AllowDrop = true;
@@ -852,6 +880,8 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(717, 553);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.coders);
             this.Controls.Add(this.memVis);
             this.Controls.Add(this.compChoice);
             this.Controls.Add(this.coalChoice);
@@ -996,6 +1026,8 @@
         private System.Windows.Forms.ComboBox coalChoice;
         private System.Windows.Forms.ComboBox compChoice;
         private System.Windows.Forms.TextBox memVis;
+        private System.Windows.Forms.TextBox coders;
+        private System.Windows.Forms.Label label1;
     }
 }
 
