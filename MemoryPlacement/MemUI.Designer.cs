@@ -796,6 +796,7 @@
             // 
             // comboxComp
             // 
+            this.comboxComp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboxComp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboxComp.FormattingEnabled = true;
             this.comboxComp.Location = new System.Drawing.Point(404, 51);
@@ -806,6 +807,7 @@
             // 
             // comboxCoal
             // 
+            this.comboxCoal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboxCoal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboxCoal.FormattingEnabled = true;
             this.comboxCoal.Location = new System.Drawing.Point(404, 22);
@@ -816,6 +818,7 @@
             // 
             // coalChoice
             // 
+            this.coalChoice.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.coalChoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.coalChoice.FormattingEnabled = true;
             this.coalChoice.Location = new System.Drawing.Point(404, 22);
@@ -826,6 +829,7 @@
             // 
             // compChoice
             // 
+            this.compChoice.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.compChoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.compChoice.FormattingEnabled = true;
             this.compChoice.Location = new System.Drawing.Point(404, 51);
@@ -836,6 +840,7 @@
             // 
             // memVis
             // 
+            this.memVis.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.memVis.BackColor = System.Drawing.SystemColors.Control;
             this.memVis.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.memVis.Location = new System.Drawing.Point(445, 91);
@@ -864,6 +869,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(598, 532);

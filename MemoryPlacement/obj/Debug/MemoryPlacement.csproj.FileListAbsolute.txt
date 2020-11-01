@@ -15,3 +15,4 @@ E:\Git Files\MemoryPlacement\MemoryPlacement\obj\Debug\MemUI.Properties.Resource
 E:\Git Files\MemoryPlacement\MemoryPlacement\obj\Debug\MemoryPlacement.csproj.GenerateResource.cache
 E:\Git Files\MemoryPlacement\MemoryPlacement\obj\Debug\MemUI.exe
 E:\Git Files\MemoryPlacement\MemoryPlacement\obj\Debug\MemUI.pdb
+E:\Git Files\MemoryPlacement\MemoryPlacement\obj\Debug\MemoryPlacement.csprojAssemblyReference.cache
